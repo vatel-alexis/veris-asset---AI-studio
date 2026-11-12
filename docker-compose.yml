@@ -34,7 +34,7 @@ services:
 
   # S3-compatible document storage (decision D-005). Initialised by scripts/init-storage.sh.
   garage:
-    image: dxflrs/garage:v2.4.1
+    image: dxflrs/garage:v2.5.0
     environment:
       GARAGE_RPC_SECRET: ${GARAGE_RPC_SECRET:?missing, run pnpm dev once to create .env}
       GARAGE_ADMIN_TOKEN: ${GARAGE_ADMIN_TOKEN:?missing, run pnpm dev once to create .env}
