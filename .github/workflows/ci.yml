@@ -1,0 +1,208 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Lint, typecheck, test, build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+        with:
+          cache: true
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint (ESLint, module boundaries, forbidden claims, formatting)
+        run: pnpm lint
+
+      # Known vulnerabilities of the dependencies shipped in production (SPEC §24): high and
+      # critical ones fail the build; lower ones are followed through Dependabot.
+      - name: Vulnerabilities of production dependencies
+        run: pnpm audit --prod --audit-level high
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Test
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
+
+      - name: Generated API client is up to date
+        run: pnpm api:generate && git diff --exit-code apps/web/src/lib/api
+
+  integration:
+    name: Database integration tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # Throwaway PostgreSQL for this run only: these passwords protect nothing and are not secrets.
+    services:
+      postgres:
+        image: postgres:18.6-alpine
+        env:
+          POSTGRES_USER: va_admin
+          POSTGRES_PASSWORD: ci-admin-password
+          POSTGRES_DB: veris_assets
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U va_admin -d veris_assets"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 20
+      redis:
+        image: redis:8.10.2-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 20
+    env:
+      POSTGRES_HOST: 127.0.0.1
+      POSTGRES_PORT: '5432'
+      POSTGRES_USER: va_admin
+      POSTGRES_PASSWORD: ci-admin-password
+      POSTGRES_DB: veris_assets
+      POSTGRES_TEST_DB: veris_assets_test
+      DB_MIGRATOR_PASSWORD: ci-migrator-password
+      DB_APP_PASSWORD: ci-app-password
+      DB_AUTH_PASSWORD: ci-auth-password
+      DB_JOBS_PASSWORD: ci-jobs-password
+      BETTER_AUTH_SECRET: ci-only-better-auth-secret-0123456789abcdef
+      DEMO_ACCOUNTS_PASSWORD: ci-demo-accounts-password
+      REDIS_HOST: 127.0.0.1
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+        with:
+          cache: true
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Integration tests (roles, row level security, append-only, migrations, authentication)
+        run: pnpm test:integration
+
+      - name: Registry coverage (at least 90 % of lines, statements and functions)
+        run: pnpm test:coverage
+
+      - name: Demo database can be reset twice in a row
+        run: pnpm db:reset && pnpm db:reset
+
+      # SPEC §24 "sauvegardes et restauration" (P16-4): a backup is restored into a separate
+      # database and compared with it, table by table and down to the ledger's hash chain.
+      - name: Backup and restoration of the demo database
+        run: pnpm db:backup --database-only && pnpm db:restore
+
+  e2e:
+    name: End-to-end scenarios (Playwright)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Throwaway PostgreSQL and Redis for this run only: these passwords protect nothing.
+    services:
+      postgres:
+        image: postgres:18.6-alpine
+        env:
+          POSTGRES_USER: va_admin
+          POSTGRES_PASSWORD: ci-admin-password
+          POSTGRES_DB: veris_assets
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U va_admin -d veris_assets"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 20
+      redis:
+        image: redis:8.10.2-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 20
+    env:
+      CI: 'true'
+      NEXT_TELEMETRY_DISABLED: '1'
+      NODE_ENV: development
+      POSTGRES_HOST: 127.0.0.1
+      POSTGRES_PORT: '5432'
+      POSTGRES_USER: va_admin
+      POSTGRES_PASSWORD: ci-admin-password
+      POSTGRES_DB: veris_assets
+      POSTGRES_TEST_DB: veris_assets_test
+      DB_MIGRATOR_PASSWORD: ci-migrator-password
+      DB_APP_PASSWORD: ci-app-password
+      DB_AUTH_PASSWORD: ci-auth-password
+      DB_JOBS_PASSWORD: ci-jobs-password
+      BETTER_AUTH_SECRET: ci-only-better-auth-secret-0123456789abcdef
+      DEMO_ACCOUNTS_PASSWORD: ci-demo-accounts-password
+      REDIS_HOST: 127.0.0.1
+      # No document is stored in these scenarios: the storage settings are placeholders.
+      S3_ENDPOINT: http://127.0.0.1:3900
+      S3_REGION: garage
+      S3_BUCKET: unused-in-e2e
+      S3_ACCESS_KEY_ID: unused-in-e2e
+      S3_SECRET_ACCESS_KEY: unused-in-e2e
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+        with:
+          cache: true
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install the Chromium browser
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Scenarios of SPEC §29
+        run: pnpm test:e2e
+
+      - name: Keep the report of a failed run
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7

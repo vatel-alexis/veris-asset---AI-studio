@@ -1,0 +1,2193 @@
+{
+  "common": {
+    "productName": "Veris Assets",
+    "skipToContent": "Skip to main content",
+    "loading": "Loading…",
+    "retry": "Try again",
+    "language": "Language",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mainNavigation": "Main navigation",
+    "backToHome": "Back to home",
+    "cancel": "Cancel",
+    "save": "Save",
+    "saved": "Changes saved.",
+    "search": "Search",
+    "never": "Never",
+    "actions": "Actions",
+    "userStatus": {
+      "ACTIVE": "Active",
+      "INACTIVE": "Inactive"
+    }
+  },
+  "demoBanner": {
+    "text": "Demonstration environment — fictitious data"
+  },
+  "languages": {
+    "en-GB": "English",
+    "fr-FR": "Français"
+  },
+  "portals": {
+    "issuer": "Issuer portal",
+    "investor": "Investor portal",
+    "platform": "Platform console"
+  },
+  "navigation": {
+    "issuer": {
+      "dashboard": "Dashboard",
+      "tasks": "To do",
+      "issuances": "Issuances",
+      "investors": "Investors",
+      "subscriptions": "Subscriptions",
+      "registry": "Registry",
+      "transfers": "Transfers",
+      "distributions": "Distributions",
+      "documents": "Documents",
+      "reports": "Reports",
+      "audit": "Audit log",
+      "settings": "Settings"
+    },
+    "investor": {
+      "portfolio": "Portfolio",
+      "opportunities": "Investment opportunities",
+      "subscriptions": "Subscriptions",
+      "transactions": "Transactions",
+      "distributions": "Distributions",
+      "documents": "Documents",
+      "profile": "Profile"
+    },
+    "platform": {
+      "tenants": "Organisations",
+      "metrics": "Metrics",
+      "templates": "Email templates",
+      "settings": "Settings",
+      "break-glass": "Emergency access"
+    }
+  },
+  "placeholder": {
+    "title": "Coming soon",
+    "description": "This screen will be built in a later phase of the project."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or has moved."
+  },
+  "errorState": {
+    "title": "Something went wrong",
+    "correlationId": "Reference for support: {id}"
+  },
+  "dataTable": {
+    "empty": "No data to display.",
+    "previousPage": "Previous page",
+    "nextPage": "Next page",
+    "pageInfo": "Page {page} of {pageCount}",
+    "rowCount": "{total, plural, one {# result} other {# results}}",
+    "sortBy": "Sort by {column}"
+  },
+  "status": {
+    "issuance": {
+      "DRAFT": "Draft",
+      "UNDER_REVIEW": "Under review",
+      "APPROVED": "Approved",
+      "SUBSCRIPTION_OPEN": "Subscription open",
+      "SUBSCRIPTION_CLOSED": "Subscription closed",
+      "ALLOCATED": "Allocated",
+      "ACTIVE": "Active",
+      "MATURED": "Matured",
+      "CANCELLED": "Cancelled"
+    },
+    "subscription": {
+      "DRAFT": "Draft",
+      "SUBMITTED": "Submitted",
+      "UNDER_REVIEW": "Under review",
+      "APPROVED": "Approved",
+      "REJECTED": "Rejected",
+      "PAYMENT_PENDING": "Payment pending",
+      "PAYMENT_CONFIRMED": "Payment confirmed",
+      "ALLOCATED": "Allocated",
+      "CANCELLED": "Cancelled"
+    },
+    "kyc": {
+      "NOT_STARTED": "Not started",
+      "IN_PROGRESS": "In progress",
+      "PENDING_REVIEW": "Pending review",
+      "APPROVED": "Approved",
+      "REJECTED": "Rejected",
+      "EXPIRED": "Expired"
+    },
+    "eligibility": {
+      "NOT_ASSESSED": "Not assessed",
+      "ELIGIBLE": "Eligible",
+      "NOT_ELIGIBLE": "Not eligible",
+      "SUSPENDED": "Suspended"
+    },
+    "transfer": {
+      "DRAFT": "Draft",
+      "SUBMITTED": "Submitted",
+      "COMPLIANCE_REVIEW": "Compliance review",
+      "APPROVED": "Approved",
+      "REJECTED": "Rejected",
+      "EXECUTED": "Executed",
+      "CANCELLED": "Cancelled"
+    },
+    "distribution": {
+      "DRAFT": "Draft",
+      "CALCULATED": "Calculated",
+      "UNDER_REVIEW": "Under review",
+      "APPROVED": "Approved",
+      "PAYMENT_INSTRUCTION_GENERATED": "Payment instruction generated",
+      "PAID": "Paid",
+      "FAILED": "Failed",
+      "CANCELLED": "Cancelled"
+    },
+    "auditResult": {
+      "SUCCESS": "Succeeded",
+      "DENIED": "Denied",
+      "FAILED": "Failed"
+    },
+    "allocationRound": {
+      "DRAFT": "Draft",
+      "PROPOSED": "Proposed",
+      "VALIDATED": "Validated",
+      "REJECTED": "Rejected"
+    },
+    "export": {
+      "QUEUED": "Queued",
+      "RUNNING": "In progress",
+      "DONE": "Ready",
+      "FAILED": "Failed"
+    }
+  },
+  "errors": {
+    "VALIDATION_FAILED": "Some information is missing or invalid.",
+    "RESOURCE_NOT_FOUND": "The requested item was not found.",
+    "PERMISSION_DENIED": "You are not allowed to perform this action.",
+    "INVALID_STATE_TRANSITION": "This action is not possible in the current status.",
+    "VERSION_CONFLICT": "Someone else modified this item. Reload the page and try again.",
+    "FOUR_EYES_VIOLATION": "This action must be validated by another user than the one who initiated it.",
+    "COMMENT_REQUIRED": "A comment is required for this action.",
+    "PRECONDITION_REQUIRED": "The page is out of date. Reload it and try again.",
+    "RATE_LIMITED": "Too many requests. Please wait a moment and try again.",
+    "PROVIDER_UNAVAILABLE": "An external service is temporarily unavailable. Please try again later.",
+    "INTERNAL_ERROR": "An unexpected error occurred.",
+    "IDEMPOTENCY_KEY_REQUIRED": "This action could not be secured against duplicates. Please try again.",
+    "IDEMPOTENCY_KEY_REUSED": "This action was already sent with different information.",
+    "IDEMPOTENCY_IN_PROGRESS": "This action is still being processed.",
+    "UNAUTHENTICATED": "Please sign in.",
+    "INVALID_CREDENTIALS": "The email or password is incorrect.",
+    "MFA_REQUIRED": "Enter the code from your authentication app.",
+    "MFA_INVALID_CODE": "The authentication code is invalid.",
+    "ACCOUNT_LOCKED": "The account is temporarily locked after too many failed attempts.",
+    "ACCOUNT_INACTIVE": "This account is inactive.",
+    "SESSION_EXPIRED": "Your session has expired. Please sign in again.",
+    "PASSWORD_TOO_WEAK": "The password does not meet the requirements.",
+    "INVITATION_INVALID_OR_EXPIRED": "The invitation is invalid or has expired.",
+    "ISSUANCE_INCONSISTENT_TERMS": "The issuance terms are inconsistent.",
+    "SUBSCRIPTION_WINDOW_NOT_STARTED": "The subscription period has not started yet.",
+    "MINIMUM_NOT_REACHED_JUSTIFICATION_REQUIRED": "The minimum amount is not reached: a justification is required to proceed.",
+    "PENDING_PAYMENTS_REMAINING": "Some subscriptions are still waiting for payment.",
+    "ELIGIBILITY_FAILED": "The investor does not meet the eligibility rules of this issuance.",
+    "SUBSCRIPTION_WINDOW_CLOSED": "The subscription period is closed.",
+    "SUBSCRIPTION_BELOW_MINIMUM": "The amount is below the minimum subscription.",
+    "SUBSCRIPTION_LIMIT_EXCEEDED": "The requested subscription exceeds the permitted limit.",
+    "AMOUNT_UNITS_MISMATCH": "The amount does not match the number of units times the nominal value.",
+    "INSUFFICIENT_UNITS": "Not enough units are available.",
+    "ISSUANCE_CAP_EXCEEDED": "The request exceeds the maximum amount of the issuance.",
+    "NOT_INVITED": "The investor is not invited to this issuance.",
+    "ALLOCATION_EXCEEDS_SUPPLY": "The allocation exceeds the total number of units.",
+    "ALLOCATION_EXCEEDS_REQUEST": "The allocation exceeds the requested number of units.",
+    "INSUFFICIENT_AVAILABLE_QUANTITY": "The available quantity is insufficient.",
+    "REGISTRY_INVARIANT_VIOLATION": "This operation would make the registry inconsistent.",
+    "QUANTITY_NOT_INTEGER": "Quantities must be whole units.",
+    "TRANSFER_NOT_ALLOWED": "Transfers are not allowed for this issuance.",
+    "SELF_TRANSFER_FORBIDDEN": "An investor cannot transfer units to itself.",
+    "LOCKUP_PERIOD_ACTIVE": "Transfers are blocked until the end of the lock-up period.",
+    "RECIPIENT_CODE_UNKNOWN": "The recipient code is unknown.",
+    "RECIPIENT_NOT_ELIGIBLE": "The recipient is not eligible.",
+    "MAX_INVESTORS_REACHED": "The maximum number of investors is reached.",
+    "DISTRIBUTION_ALREADY_EXISTS": "A distribution already exists for this payment date.",
+    "SNAPSHOT_MISMATCH": "The recalculation from the snapshot gives a different result.",
+    "FILE_TYPE_NOT_ALLOWED": "This file type is not allowed.",
+    "FILE_TOO_LARGE": "The file is too large.",
+    "FILE_REJECTED_BY_SCAN": "The file was rejected by the security scan.",
+    "MFA_ENROLLMENT_REQUIRED": "Set up two-factor authentication to continue.",
+    "RESET_TOKEN_INVALID_OR_EXPIRED": "This password reset link is invalid or has expired. Request a new one.",
+    "SUBSCRIPTIONS_TO_DECIDE": "Some subscriptions still wait for a decision: approve or reject them first.",
+    "PAYMENT_NOT_RECEIVED": "The payment has not been received yet."
+  },
+  "eligibilityRules": {
+    "PROFILE_INACTIVE": "The investor profile is not active.",
+    "KYC_NOT_APPROVED": "The KYC/KYB check is not approved.",
+    "KYC_EXPIRED": "The KYC/KYB check has expired.",
+    "KYC_EXPIRES_TOO_SOON": "The KYC/KYB check expires too soon for this issuance.",
+    "CLASSIFICATION_INCOMPATIBLE": "The investor classification is not accepted.",
+    "INVESTOR_TYPE_NOT_ALLOWED": "This type of investor is not accepted.",
+    "NOT_PROFESSIONAL": "This issuance is reserved for professional investors.",
+    "COUNTRY_EXCLUDED": "The investor’s country is excluded from this issuance.",
+    "COUNTRY_NOT_ALLOWED": "The investor’s country is not in the allowed list.",
+    "INVESTOR_SUSPENDED": "The investor is suspended.",
+    "INVESTOR_NOT_ELIGIBLE": "The investor has been assessed as not eligible.",
+    "MAX_INVESTORS_REACHED": "The maximum number of investors is reached."
+  },
+  "issuanceTermsRules": {
+    "TARGET_NOT_EQUAL_NOMINAL_TIMES_UNITS": "The target amount must equal the nominal value times the number of units.",
+    "MIN_TARGET_MAX_ORDER": "The minimum must not exceed the target, nor the target the maximum.",
+    "MIN_SUBSCRIPTION_ABOVE_MAX_PER_INVESTOR": "The minimum subscription exceeds the maximum per investor.",
+    "DATE_ORDER_INVALID": "The dates must follow each other: subscription start, subscription end, issue date, maturity.",
+    "COUNTRY_BOTH_ALLOWED_AND_EXCLUDED": "A country cannot be both allowed and excluded.",
+    "NEGATIVE_RATE": "The rate cannot be negative.",
+    "RATE_TYPE_NOT_SUPPORTED": "Only fixed rates are supported.",
+    "FREQUENCY_NOT_SUPPORTED": "This distribution frequency is not supported.",
+    "UNITS_NOT_INTEGER": "The number of units must be a whole number.",
+    "REQUIRED_FIELD_MISSING": "This information is needed before submitting.",
+    "AMOUNT_TOO_PRECISE": "This amount has more decimals than the currency allows."
+  },
+  "passwordRules": {
+    "PASSWORD_TOO_SHORT": "Use at least 12 characters.",
+    "PASSWORD_TOO_LONG": "Use at most 128 characters.",
+    "PASSWORD_TOO_COMMON": "This password is too common. Choose another one."
+  },
+  "auth": {
+    "signIn": {
+      "title": "Sign in",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign in",
+      "forgotPassword": "Forgot your password?"
+    },
+    "demo": {
+      "title": "Demonstration accounts",
+      "description": "Every account uses the password below. Accounts with two-factor authentication show their current code.",
+      "password": "Password: {password}",
+      "use": "Use",
+      "useAccount": "Fill the form with {name}",
+      "code": "Code: {code}",
+      "codeRenewal": "Codes change every 30 seconds.",
+      "platform": "Platform"
+    },
+    "roles": {
+      "PLATFORM_ADMIN": "Platform administrator",
+      "ISSUER_ADMIN": "Issuer administrator",
+      "ISSUER_OPERATOR": "Issuer operator",
+      "COMPLIANCE_OFFICER": "Compliance officer",
+      "AUDITOR": "Auditor",
+      "INVESTOR": "Investor"
+    },
+    "mfa": {
+      "title": "Two-factor authentication",
+      "description": "Enter the 6-digit code shown by your authentication app.",
+      "backupDescription": "Enter one of your backup codes. Each code works only once.",
+      "code": "Code",
+      "submit": "Verify",
+      "useBackupCode": "Use a backup code",
+      "useAuthenticator": "Use the authentication app",
+      "backToSignIn": "Back to sign-in"
+    },
+    "mfaSetup": {
+      "title": "Set up two-factor authentication",
+      "intro": "Your role requires a second factor. You need an authentication app on your phone (for example a TOTP app).",
+      "passwordStep": "Confirm your password to start.",
+      "continue": "Continue",
+      "scan": "Scan this QR code with your authentication app.",
+      "qrAlt": "QR code to add Veris Assets to your authentication app",
+      "manualKey": "Or enter this key manually: {key}",
+      "backupCodes": "Backup codes",
+      "backupCodesHelp": "Keep these codes in a safe place: each one lets you sign in once if you lose your phone. They will not be shown again.",
+      "confirmStep": "Enter the code shown by the app to finish.",
+      "confirm": "Activate"
+    },
+    "forgot": {
+      "title": "Forgot your password?",
+      "description": "Enter your email: if an account exists, you will receive a link to choose a new password.",
+      "submit": "Send the link",
+      "sent": "If an account exists for this email, a link has been sent. It is valid for one hour."
+    },
+    "reset": {
+      "title": "Choose a new password",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm the password",
+      "submit": "Save the password",
+      "mismatch": "The two passwords are different.",
+      "done": "Your password has been changed. You can now sign in.",
+      "missingToken": "This link is incomplete. Request a new one."
+    },
+    "invitation": {
+      "title": "Join Veris Assets",
+      "tenantInvitation": "{name}, you are invited to join {tenant} as {role}.",
+      "platformInvitation": "{name}, you are invited to join the platform as {role}.",
+      "choosePassword": "Choose your password to activate your account ({email}).",
+      "submit": "Activate my account"
+    },
+    "passwordHint": "At least 12 characters. A passphrase of a few words is easy to remember.",
+    "signOut": "Sign out",
+    "signedInAs": "Signed in as {name}"
+  },
+  "validationDetails": {
+    "OWN_ACCOUNT": "You cannot change your own account.",
+    "LAST_ADMINISTRATOR": "The organisation must keep at least one active administrator.",
+    "ROLE_NOT_ASSIGNABLE": "This role cannot be given here.",
+    "EMAIL_ALREADY_REGISTERED": "An account already exists with this email.",
+    "TENANT_UNKNOWN": "This organisation does not exist.",
+    "MANDATORY_CATEGORY": "Security and workflow notifications cannot be switched off.",
+    "INVALID_IDEMPOTENCY_KEY": "This action could not be secured against duplicates. Please try again.",
+    "OPEN_KYC_CASE_EXISTS": "This investor already has a KYC/KYB case in progress.",
+    "KYC_EVIDENCE_REQUIRED": "Attach at least one piece of evidence before submitting the case.",
+    "NOT_KYC_EVIDENCE_OF_INVESTOR": "Only the KYC evidence of this investor can be attached.",
+    "UNKNOWN_OWNER": "The investor or issuance of this document does not exist.",
+    "FILE_REQUIRED": "Choose a file.",
+    "TYPE_NOT_ALLOWED": "Allowed files: PDF, PNG, JPEG, CSV and XLSX. The type is checked from the content, not the name.",
+    "MAX_10_MB": "The file must not exceed 10 MB.",
+    "ISSUANCE_CODE_TAKEN": "Another issuance already has this code.",
+    "ALREADY_INVITED": "This investor is already invited.",
+    "NOT_A_DOCUMENT_OF_ISSUANCE": "This document does not belong to the issuance.",
+    "SUBSCRIPTION_START_DATE": "Subscriptions open on the start date of the issuance.",
+    "DOCUMENTS_NOT_ACCEPTED": "Accept the documents of the issuance.",
+    "ELIGIBILITY_NOT_DECLARED": "Declare that you meet the eligibility conditions.",
+    "ALLOCATION_ROUND_IN_PROGRESS": "An allocation is being prepared for this issuance: reject or abandon it first.",
+    "SUBSCRIPTION_NOT_APPROVED": "A subscription of the allocation is no longer approved: reject the allocation and prepare a new one.",
+    "NOT_A_LINE_OF_ROUND": "This subscription is not part of the allocation.",
+    "CORRECTION_NOT_SUPPORTED_FOR_TYPE": "A block or an unblock is undone by the opposite movement, not by a correction.",
+    "ALREADY_CORRECTED": "This movement has already been corrected.",
+    "CORRECTION_PENDING": "A correction of this movement is already waiting for a decision.",
+    "REPLACEMENT_WITHOUT_ACCOUNT": "A replacement movement needs at least one account.",
+    "ACCOUNT_NOT_OF_ISSUANCE": "The accounts must belong to this issuance.",
+    "RECORD_DATE_NOT_REACHED": "The record date is not reached yet: the holders are not known.",
+    "COUPONS_NOT_DISTRIBUTED": "Every coupon due before the principal must be distributed first.",
+    "UNITS_BLOCKED": "Units are blocked (a transfer under review): decide or cancel it first.",
+    "HOLDINGS_CHANGED_SINCE_RECORD_DATE": "The holdings changed since the record date: send the distribution back to draft and calculate it again.",
+    "EARLY_REDEMPTION_DATE_INVALID": "Choose a date from today to before the maturity date.",
+    "DISTRIBUTION_IN_PROGRESS": "A distribution of a later payment is in progress: cancel it first."
+  },
+  "organizationTypes": {
+    "ISSUER": "Issuer",
+    "ASSET_MANAGER": "Asset manager",
+    "FUND": "Fund"
+  },
+  "tenants": {
+    "title": "Organisations",
+    "description": "Organisations using the platform. Their business data stays out of your reach.",
+    "new": "New organisation",
+    "caption": "List of organisations",
+    "columns": {
+      "legalName": "Legal name",
+      "country": "Country",
+      "type": "Type",
+      "status": "Status",
+      "createdAt": "Created on"
+    },
+    "status": {
+      "ACTIVE": "Active",
+      "INACTIVE": "Deactivated"
+    },
+    "form": {
+      "organisation": "Organisation",
+      "legalName": "Legal name",
+      "tradeName": "Trade name",
+      "country": "Country",
+      "currency": "Main currency",
+      "defaultLocale": "Default language",
+      "timezone": "Time zone",
+      "type": "Type of organisation",
+      "firstAdministrator": "First administrator",
+      "firstAdministratorHelp": "This person receives an invitation by email to activate the account.",
+      "adminName": "Full name",
+      "adminEmail": "Email",
+      "adminLocale": "Language of the invitation",
+      "create": "Create the organisation"
+    },
+    "detail": {
+      "back": "All organisations",
+      "deactivate": "Deactivate",
+      "activate": "Reactivate",
+      "deactivateTitle": "Deactivate {name}?",
+      "deactivateDescription": "Every user of this organisation is signed out at once and cannot sign in until it is reactivated. No data is deleted.",
+      "activateTitle": "Reactivate {name}?",
+      "activateDescription": "The users of this organisation will be able to sign in again.",
+      "inviteAdministrator": "Invite another administrator",
+      "invite": "Send the invitation",
+      "invitationSent": "Invitation sent to {email}."
+    }
+  },
+  "users": {
+    "title": "Users",
+    "caption": "Users of the organisation",
+    "columns": {
+      "name": "Name",
+      "email": "Email",
+      "roles": "Roles",
+      "status": "Status",
+      "mfa": "Two-factor",
+      "lastLogin": "Last sign-in"
+    },
+    "mfaOn": "On",
+    "mfaOff": "Off",
+    "invite": {
+      "title": "Invite a user",
+      "role": "Role",
+      "submit": "Send the invitation",
+      "sent": "Invitation sent to {email}."
+    },
+    "pending": {
+      "title": "Pending invitations",
+      "expires": "Expires on {date}",
+      "none": "No pending invitation."
+    },
+    "roles": {
+      "edit": "Roles",
+      "title": "Roles of {name}",
+      "help": "The user is signed out and gets the new rights at the next sign-in.",
+      "save": "Save the roles"
+    },
+    "deactivate": "Deactivate",
+    "reactivate": "Reactivate",
+    "deactivateTitle": "Deactivate {name}?",
+    "deactivateDescription": "{name} is signed out at once and can no longer sign in. The history is kept.",
+    "reactivateTitle": "Reactivate {name}?",
+    "reactivateDescription": "{name} will be able to sign in again with the same roles."
+  },
+  "settings": {
+    "title": "Settings",
+    "organisation": "Organisation",
+    "legalName": "Legal name: {name}"
+  },
+  "notifications": {
+    "bell": "Notifications",
+    "bellUnread": "Notifications, {count} unread",
+    "title": "Notifications",
+    "markAllRead": "Mark all as read",
+    "empty": "No notification yet.",
+    "unread": "(unread)",
+    "preferences": {
+      "open": "Notification preferences",
+      "title": "Notification preferences",
+      "description": "Choose how you are told about each kind of event. Security and workflow notifications are always sent.",
+      "category": "Category",
+      "inApp": "In the app",
+      "email": "By email",
+      "mandatory": "Always on"
+    },
+    "categories": {
+      "SECURITY": "Security",
+      "WORKFLOW": "Tasks and approvals",
+      "ORGANISATION": "Organisation",
+      "ISSUANCE": "Issuances",
+      "INVESTMENT": "Subscriptions and transfers",
+      "DISTRIBUTION": "Distributions",
+      "DOCUMENT": "Documents",
+      "COMPLIANCE": "Compliance"
+    }
+  },
+  "audit": {
+    "title": "Audit log",
+    "description": "Every sensitive action of the organisation, who did it and when. The log cannot be changed.",
+    "caption": "Audit log entries, newest first",
+    "empty": "No entry matches these filters.",
+    "system": "System",
+    "unknownActor": "Unknown user",
+    "open": "Details",
+    "filters": {
+      "title": "Filters",
+      "action": "Action",
+      "result": "Result",
+      "from": "From",
+      "to": "To",
+      "all": "All",
+      "apply": "Filter",
+      "reset": "Reset"
+    },
+    "results": {
+      "SUCCESS": "Succeeded",
+      "DENIED": "Denied",
+      "FAILED": "Failed"
+    },
+    "columns": {
+      "occurredAt": "Date",
+      "actor": "User",
+      "action": "Action",
+      "resource": "Resource",
+      "result": "Result",
+      "details": "Details"
+    },
+    "resources": {
+      "user": "User",
+      "tenant": "Organisation",
+      "user_invitation": "Invitation",
+      "investor": "Investor",
+      "kyc_case": "KYC/KYB case",
+      "document": "Document",
+      "issuance": "Issuance",
+      "subscription": "Subscription",
+      "allocation_round": "Allocation",
+      "correction_request": "Registry correction",
+      "transfer": "Transfer",
+      "distribution": "Distribution",
+      "export": "Export"
+    },
+    "sources": {
+      "WEB": "Web application",
+      "API": "API",
+      "JOB": "Background job",
+      "SYSTEM": "System"
+    },
+    "detail": {
+      "title": "Audit entry",
+      "source": "Source",
+      "ipAddress": "IP address",
+      "userAgent": "Browser",
+      "correlationId": "Support reference",
+      "changes": "Changes",
+      "field": "Field",
+      "before": "Before",
+      "after": "After",
+      "masked": "Personal and sensitive data is masked in the audit log.",
+      "close": "Close"
+    },
+    "actions": {
+      "ACCESS_DENIED": "Access denied",
+      "TENANT_OVERRIDE_ATTEMPT": "Attempt to reach another organisation",
+      "AUTH_SIGN_IN": "Sign-in",
+      "AUTH_SECOND_FACTOR": "Two-factor check",
+      "AUTH_SIGN_OUT": "Sign-out",
+      "AUTH_MFA_ENABLED": "Two-factor authentication set up",
+      "AUTH_PASSWORD_RESET_REQUESTED": "Password reset requested",
+      "AUTH_PASSWORD_RESET": "Password reset",
+      "USER_INVITED": "User invited",
+      "USER_INVITATION_ACCEPTED": "Invitation accepted",
+      "USER_UPDATED": "User updated",
+      "USER_DEACTIVATED": "User deactivated",
+      "USER_REACTIVATED": "User reactivated",
+      "USER_ROLES_CHANGED": "Roles changed",
+      "TENANT_CREATED": "Organisation created",
+      "TENANT_UPDATED": "Organisation updated",
+      "TENANT_ACTIVATED": "Organisation activated",
+      "TENANT_DEACTIVATED": "Organisation deactivated",
+      "TENANT_SETTINGS_UPDATED": "Settings changed",
+      "INVESTOR_CREATED": "Investor created",
+      "INVESTOR_UPDATED": "Investor updated",
+      "INVESTOR_PROFILE_UPDATED": "Profile updated by the investor",
+      "INVESTOR_RECIPIENT_CODE_REGENERATED": "Recipient code renewed",
+      "INVESTOR_REPRESENTATIVE_ADDED": "Representative added",
+      "INVESTOR_REPRESENTATIVE_UPDATED": "Representative updated",
+      "INVESTOR_BENEFICIAL_OWNER_ADDED": "Beneficial owner added",
+      "INVESTOR_BENEFICIAL_OWNER_UPDATED": "Beneficial owner updated",
+      "COMPLIANCE_COMMENT_ADDED": "Compliance comment added",
+      "KYC_CASE_OPENED": "KYC/KYB case opened",
+      "KYC_DOCUMENT_ATTACHED": "KYC evidence attached",
+      "KYC_CASE_SUBMITTED": "KYC/KYB case submitted",
+      "KYC_APPROVED": "KYC/KYB approved",
+      "KYC_REJECTED": "KYC/KYB rejected",
+      "KYC_SENT_BACK": "KYC/KYB case sent back",
+      "KYC_EXPIRED": "KYC/KYB expired",
+      "DOCUMENT_UPLOADED": "Document added",
+      "DOCUMENT_VERSION_ADDED": "New version of a document",
+      "DOCUMENT_ARCHIVED": "Document archived",
+      "DOCUMENT_DOWNLOADED": "Confidential document downloaded",
+      "DOCUMENT_REJECTED": "File rejected by the security scan",
+      "ELIGIBILITY_ASSESSED": "Eligibility checked",
+      "ELIGIBILITY_STATUS_CHANGED": "Eligibility status decided",
+      "ISSUANCE_CREATED": "Issuance created",
+      "ISSUANCE_UPDATED": "Issuance updated",
+      "ISSUANCE_TERMS_UPDATED": "Issuance terms updated",
+      "ISSUANCE_RULES_UPDATED": "Eligibility rules updated",
+      "ISSUANCE_UNDER_REVIEW": "Issuance submitted",
+      "ISSUANCE_APPROVED": "Issuance approved",
+      "ISSUANCE_RETURNED_TO_DRAFT": "Issuance sent back to draft",
+      "ISSUANCE_SUBSCRIPTION_OPEN": "Subscriptions opened",
+      "ISSUANCE_SUBSCRIPTION_CLOSED": "Subscriptions closed",
+      "ISSUANCE_CANCELLED": "Issuance cancelled",
+      "ISSUANCE_DOCUMENT_ATTACHED": "Issuance document added",
+      "INVESTOR_INVITED_TO_ISSUANCE": "Investor invited",
+      "INVESTOR_INVITATION_REVOKED": "Invitation revoked",
+      "SUBSCRIPTION_CREATED": "Subscription drafted",
+      "SUBSCRIPTION_UPDATED": "Subscription draft changed",
+      "SUBSCRIPTION_SUBMITTED": "Subscription submitted",
+      "SUBSCRIPTION_UNDER_REVIEW": "Subscription under review",
+      "SUBSCRIPTION_APPROVED": "Subscription approved",
+      "SUBSCRIPTION_REJECTED": "Subscription rejected",
+      "SUBSCRIPTION_CANCELLED": "Subscription cancelled",
+      "ALLOCATION_ROUND_CREATED": "Allocation prepared",
+      "ALLOCATION_ROUND_UPDATED": "Allocation changed",
+      "ALLOCATION_ROUND_PROPOSED": "Allocation proposed",
+      "ALLOCATION_ROUND_VALIDATED": "Allocation validated",
+      "ALLOCATION_ROUND_REJECTED": "Allocation rejected",
+      "ISSUANCE_ALLOCATED": "Issuance allocated",
+      "SUBSCRIPTION_PAYMENT_PENDING": "Subscription waiting for payment",
+      "PAYMENT_PREPARED": "Payment prepared",
+      "PAYMENT_CONFIRMED": "Payment confirmed",
+      "SUBSCRIPTION_PAYMENT_CONFIRMED": "Subscription paid",
+      "SUBSCRIPTION_ALLOCATED": "Subscription allocated",
+      "REGISTRY_CORRECTION_REQUESTED": "Registry correction proposed",
+      "REGISTRY_CORRECTION_APPROVED": "Registry correction approved",
+      "REGISTRY_CORRECTION_REJECTED": "Registry correction rejected",
+      "REGISTRY_RECONCILIATION_FAILED": "Registry anomaly found",
+      "TRANSFER_CREATED": "Transfer drafted",
+      "TRANSFER_UPDATED": "Transfer draft changed",
+      "TRANSFER_SUBMITTED": "Transfer submitted",
+      "TRANSFER_COMPLIANCE_REVIEW": "Transfer under compliance review",
+      "TRANSFER_APPROVED": "Transfer approved",
+      "TRANSFER_EXECUTED": "Transfer executed",
+      "TRANSFER_REJECTED": "Transfer rejected",
+      "TRANSFER_CANCELLED": "Transfer cancelled",
+      "COUPON_SCHEDULE_GENERATED": "Coupon schedule generated",
+      "ISSUANCE_ACTIVE": "Issuance activated",
+      "DISTRIBUTION_CREATED": "Distribution created",
+      "DISTRIBUTION_CALCULATED": "Distribution calculated",
+      "DISTRIBUTION_UNDER_REVIEW": "Distribution submitted",
+      "DISTRIBUTION_APPROVED": "Distribution approved",
+      "DISTRIBUTION_DRAFT": "Distribution sent back to draft",
+      "DISTRIBUTION_CANCELLED": "Distribution cancelled",
+      "DISTRIBUTION_PAYMENT_INSTRUCTION_GENERATED": "Payment instruction generated",
+      "DISTRIBUTION_PAYMENT_PREPARED": "Distribution payment prepared",
+      "DISTRIBUTION_PAID": "Distribution paid",
+      "DISTRIBUTION_FAILED": "Distribution payment failed",
+      "ISSUANCE_MATURED": "Issuance matured",
+      "ISSUANCE_EARLY_REDEMPTION_SCHEDULED": "Early redemption scheduled",
+      "DOCUMENT_GENERATED": "Document generated",
+      "EXPORT_REQUESTED": "Export requested",
+      "EXPORT_GENERATED": "Export generated",
+      "SECURITY_NEW_SIGN_IN_ADDRESS": "Sign-in from a new address",
+      "SECURITY_SUSPICIOUS_ACTIVITY": "Suspicious activity",
+      "BREAK_GLASS_STARTED": "Emergency access opened",
+      "BREAK_GLASS_ACCESS": "Page viewed under emergency access",
+      "BREAK_GLASS_ENDED": "Emergency access ended"
+    }
+  },
+  "investors": {
+    "title": "Investors",
+    "description": "Profiles of the organisation's investors, their KYC/KYB and their documents.",
+    "caption": "Investors of the organisation",
+    "empty": "No investor matches.",
+    "new": "New investor",
+    "newDescription": "Create the profile; its KYC/KYB case is opened from its page.",
+    "allKycStatuses": "All KYC statuses",
+    "back": "Investors",
+    "profile": "Profile",
+    "documents": "Documents",
+    "recipientCode": "recipient code {code}",
+    "columns": {
+      "legalName": "Legal name",
+      "country": "Country",
+      "classification": "Classification",
+      "profileStatus": "Profile",
+      "kycStatus": "KYC/KYB",
+      "kycExpiryDate": "KYC expires on"
+    },
+    "classification": {
+      "PROFESSIONAL": "Professional client",
+      "ELIGIBLE_COUNTERPARTY": "Eligible counterparty"
+    },
+    "profileStatus": {
+      "DRAFT": "Draft",
+      "ACTIVE": "Active",
+      "INACTIVE": "Inactive"
+    },
+    "type": {
+      "LEGAL_ENTITY": "Legal entity",
+      "NATURAL_PERSON": "Natural person"
+    },
+    "form": {
+      "legend": "Investor profile",
+      "type": "Type",
+      "tradeName": "Trade name",
+      "legalForm": "Legal form",
+      "registrationNumber": "Registration number",
+      "taxId": "Tax identifier",
+      "countryOfIncorporation": "Country of incorporation",
+      "contactEmail": "Contact email",
+      "phone": "Phone",
+      "address": "Address",
+      "line1": "Address line",
+      "line2": "Address line 2",
+      "postalCode": "Postal code",
+      "city": "City",
+      "addressCountry": "Country",
+      "create": "Create the investor"
+    },
+    "people": {
+      "title": "Representatives and beneficial owners",
+      "personalData": "Personal data (fictitious): shown only to the people who need it, masked in the logs and the audit log.",
+      "representatives": "Legal representatives",
+      "beneficialOwners": "Beneficial owners",
+      "none": "None yet.",
+      "fullName": "Full name",
+      "personTitle": "Position",
+      "email": "Email",
+      "nationality": "Nationality",
+      "ownership": "Ownership (%)",
+      "ownershipHint": "A number from 0.01 to 100, e.g. 25.5",
+      "addRepresentative": "Add the representative",
+      "addBeneficialOwner": "Add the beneficial owner"
+    },
+    "comments": {
+      "title": "Compliance comments",
+      "none": "No comment yet.",
+      "new": "New comment",
+      "add": "Add the comment"
+    }
+  },
+  "kyc": {
+    "title": "KYC/KYB",
+    "open": "Open a KYC/KYB case",
+    "openNew": "Open a new case",
+    "none": "No KYC/KYB case yet.",
+    "status": "Status",
+    "preparedAt": "Prepared on",
+    "provider": "Check by the provider (simulated)",
+    "providerOutcome": {
+      "CLEAR": "Nothing found",
+      "REVIEW": "Careful review recommended"
+    },
+    "suggestedRisk": "suggested risk: {level}",
+    "risk": {
+      "LOW": "low",
+      "MEDIUM": "medium",
+      "HIGH": "high"
+    },
+    "validUntil": "Valid until",
+    "decisionComment": "Comment of the decision",
+    "waitingForDecision": "Waiting for the decision of a Compliance Officer.",
+    "noEvidence": "No evidence attached yet.",
+    "evidence": "Evidence",
+    "download": "Download",
+    "kinds": {
+      "REGISTRATION_EXTRACT": "Company register extract",
+      "ARTICLES_OF_ASSOCIATION": "Articles of association",
+      "REPRESENTATIVE_ID": "Representative’s identity document",
+      "BENEFICIAL_OWNERS_DECLARATION": "Beneficial owners declaration",
+      "PROOF_OF_ADDRESS": "Proof of address",
+      "OTHER": "Other"
+    },
+    "attach": {
+      "title": "Attach evidence",
+      "noneAvailable": "Upload the investor’s evidence below (type “KYC evidence”), then attach it here.",
+      "document": "Document",
+      "kind": "Kind",
+      "submit": "Attach"
+    },
+    "submit": {
+      "action": "Submit for review",
+      "title": "Submit the case for review?",
+      "description": "The simulated provider checks the case, then a Compliance Officer decides. You will no longer be able to change the evidence."
+    },
+    "decide": {
+      "approve": "Approve",
+      "reject": "Reject",
+      "send-back": "Send back",
+      "approveTitle": "Approve the KYC/KYB case?",
+      "approveDescription": "The approval is valid 12 months. The person who prepared the case cannot approve it.",
+      "rejectTitle": "Reject the KYC/KYB case?",
+      "rejectDescription": "The investor will not be able to subscribe until a new case is approved.",
+      "send-backTitle": "Send the case back?",
+      "send-backDescription": "The case goes back to its preparer, who completes it and submits it again.",
+      "comment": "Comment (optional)",
+      "commentRequired": "Comment (required)"
+    }
+  },
+  "documents": {
+    "title": "Documents",
+    "description": "Documents of the organisation, its issuances and its investors.",
+    "ownTitle": "My documents",
+    "ownDescription": "Your documents and those shared with you. Files are checked before being stored.",
+    "caption": "Documents",
+    "empty": "No document yet.",
+    "download": "Download",
+    "columns": {
+      "name": "Name",
+      "type": "Type",
+      "confidentiality": "Visible by",
+      "file": "File",
+      "uploadedAt": "Added on",
+      "download": "File"
+    },
+    "types": {
+      "ISSUANCE_DOCUMENT": "Issuance document",
+      "INVESTOR_DOCUMENT": "Investor document",
+      "KYC_EVIDENCE": "KYC evidence",
+      "SUBSCRIPTION_FORM": "Subscription form",
+      "ALLOCATION_CONFIRMATION": "Allocation confirmation",
+      "POSITION_STATEMENT": "Position statement",
+      "COUPON_NOTICE": "Coupon notice",
+      "REPORT": "Report"
+    },
+    "confidentiality": {
+      "INVESTOR_VISIBLE": "The investor and the staff",
+      "INTERNAL": "The staff only",
+      "CONFIDENTIAL": "Confidential (compliance)"
+    },
+    "upload": {
+      "title": "Add a document",
+      "file": "File",
+      "hint": "PDF, PNG, JPEG, CSV or XLSX, 10 MB at most.",
+      "tooBig": "This file is over 10 MB.",
+      "name": "Name",
+      "submit": "Upload",
+      "done": "The document was added."
+    }
+  },
+  "profile": {
+    "title": "My profile",
+    "description": "Your organisation as known by the issuer, and your contact details.",
+    "kycStatus": "KYC/KYB",
+    "kycExpiry": "KYC/KYB valid until",
+    "registrationNumber": "Registration number",
+    "country": "Country of incorporation",
+    "contact": "Contact details",
+    "recipientCode": {
+      "title": "Recipient code",
+      "help": "Give this code to another investor who wants to transfer units to you. It never reveals your identity.",
+      "regenerate": "Create a new code",
+      "confirmTitle": "Create a new recipient code?",
+      "confirmDescription": "Your current code stops working at once."
+    }
+  },
+  "eligibility": {
+    "title": "Eligibility",
+    "resultTitle": "Result of the eligibility check",
+    "eligible": "Eligible: every rule is met.",
+    "notEligible": "Not eligible: {count, plural, one {# rule is not met} other {# rules are not met}}.",
+    "passed": "Met:",
+    "failed": "Not met:",
+    "details": {
+      "profileStatus": "Profile: {value}",
+      "kycStatus": "KYC/KYB: {value}",
+      "expiryDate": "KYC/KYB valid until {value}",
+      "requiredUntil": "must be valid until {value}",
+      "classification": "Classification: {value}",
+      "investorType": "Type: {value}",
+      "country": "Country: {value}",
+      "maxInvestors": "Maximum: {value} investors",
+      "currentInvestorCount": "Current: {value}"
+    },
+    "decide": {
+      "title": "Decision of the Compliance Officer",
+      "status": "New status",
+      "justification": "Justification (required)",
+      "submit": "Record the decision"
+    },
+    "simulate": {
+      "title": "Try the rules of an issuance",
+      "help": "Checks the investor against these rules now, without recording anything.",
+      "professionalOnly": "Professional investors only",
+      "kycRequired": "Valid KYC/KYB required",
+      "minDays": "KYC/KYB still valid after (days)",
+      "excludedCountries": "Excluded countries",
+      "allowedCountries": "Allowed countries (none: all)",
+      "submit": "Check"
+    },
+    "history": {
+      "title": "Decisions",
+      "none": "No decision yet.",
+      "show": "Show the rules",
+      "hide": "Hide the rules",
+      "result": {
+        "ELIGIBLE": "Eligible",
+        "NOT_ELIGIBLE": "Not eligible"
+      },
+      "context": {
+        "INVITATION": "invitation",
+        "SUBSCRIPTION": "subscription",
+        "TRANSFER": "transfer",
+        "MANUAL": "decision of a Compliance Officer"
+      }
+    }
+  },
+  "eligibilityChecks": {
+    "PROFILE_INACTIVE": "The investor profile is active.",
+    "KYC_NOT_APPROVED": "The KYC/KYB check is approved.",
+    "KYC_EXPIRED": "The KYC/KYB check has not expired.",
+    "KYC_EXPIRES_TOO_SOON": "The KYC/KYB check stays valid long enough.",
+    "CLASSIFICATION_INCOMPATIBLE": "The investor classification is accepted.",
+    "INVESTOR_TYPE_NOT_ALLOWED": "This type of investor is accepted.",
+    "NOT_PROFESSIONAL": "The investor is a professional investor.",
+    "COUNTRY_EXCLUDED": "The investor’s country is not excluded.",
+    "COUNTRY_NOT_ALLOWED": "The investor’s country is allowed.",
+    "INVESTOR_SUSPENDED": "The investor is not suspended.",
+    "INVESTOR_NOT_ELIGIBLE": "No Compliance Officer has found the investor not eligible.",
+    "MAX_INVESTORS_REACHED": "The maximum number of investors is not reached."
+  },
+  "issuances": {
+    "title": "Issuances",
+    "description": "Your issuances, from the draft to their end.",
+    "caption": "Issuances of the organisation",
+    "empty": "No issuance matches.",
+    "new": "New issuance",
+    "newDescription": "Give it a name and a short code; the wizard guides you through the rest, saving as you go.",
+    "createDraft": "Create the draft",
+    "allStatuses": "All statuses",
+    "allCategories": "All categories",
+    "back": "Issuances",
+    "statusComment": "Comment:",
+    "fourEyes": "You submitted this issuance: another Issuer Administrator must approve it.",
+    "yes": "Yes",
+    "no": "No",
+    "any": "Any",
+    "download": "Download",
+    "unknownUser": "Unknown user",
+    "system": "System",
+    "columns": {
+      "name": "Issuance",
+      "status": "Status",
+      "category": "Category",
+      "target": "Target",
+      "window": "Subscriptions"
+    },
+    "categories": {
+      "PRIVATE_DEBT": "Private debt",
+      "RENEWABLE_ENERGY": "Renewable energy",
+      "REAL_ESTATE": "Real estate",
+      "INFRASTRUCTURE": "Infrastructure",
+      "PRIVATE_EQUITY": "Private equity"
+    },
+    "fields": {
+      "name": "Name",
+      "code": "Short code",
+      "codeHint": "2 to 20 letters, digits or hyphens, unique in your organisation.",
+      "codeInvalid": "Use 2 to 20 letters, digits or hyphens.",
+      "description": "Description",
+      "assetCategory": "Asset category",
+      "countryCode": "Country of issuance",
+      "currency": "Currency",
+      "legalIssuerName": "Legal issuer",
+      "spvName": "SPV (optional)",
+      "targetAmount": "Target amount",
+      "minimumAmount": "Minimum amount",
+      "maximumAmount": "Maximum amount",
+      "nominalValue": "Nominal value of a unit",
+      "totalUnits": "Total number of units",
+      "ratePercent": "Interest rate (%)",
+      "rateHint": "Fixed rate, e.g. 5 or 5.25",
+      "distributionFrequency": "Distribution frequency",
+      "issueDate": "Issue date",
+      "maturityDate": "Maturity date",
+      "subscriptionStartDate": "Subscriptions open on",
+      "subscriptionEndDate": "Subscriptions close on",
+      "minSubscriptionAmount": "Minimum subscription",
+      "maxAmountPerInvestor": "Maximum per investor",
+      "professionalOnly": "Professional investors only",
+      "kycRequired": "Valid KYC/KYB required",
+      "kycMinRemainingValidityDays": "KYC/KYB still valid after (days)",
+      "maxInvestors": "Maximum number of investors",
+      "maxInvestorsHint": "Empty: no limit.",
+      "excludedCountries": "Excluded countries",
+      "allowedCountries": "Allowed countries",
+      "allowedInvestorTypes": "Investor types accepted",
+      "allowedClassifications": "Classifications accepted",
+      "emptyListHint": "A list left empty means no restriction.",
+      "transfersAllowed": "Transfers between investors allowed",
+      "manualTransferApproval": "Transfers approved manually",
+      "lockupEndDate": "End of the lock-up",
+      "lockupHint": "No transfer before this date (optional).",
+      "dayCount": "Day count convention",
+      "gracePeriodDays": "Grace period (days)",
+      "roundingMethod": "Rounding",
+      "businessDayConvention": "Payment on a non-business day",
+      "recordDateOffsetBusinessDays": "Record date (business days before payment)",
+      "recordDateHint": "The holders on this date receive the coupon.",
+      "earlyRedemptionAllowed": "Early redemption allowed",
+      "documentKind": "Kind of document"
+    },
+    "fieldNames": {
+      "name": "Name",
+      "code": "Short code",
+      "assetCategory": "Asset category",
+      "countryCode": "Country of issuance",
+      "currency": "Currency",
+      "legalIssuerName": "Legal issuer",
+      "eligibilityRules_excludedCountries": "Excluded countries",
+      "terms_interestRate": "Interest rate (%)",
+      "terms_rateType": "Rate type",
+      "terms_dayCount": "Day count convention",
+      "terms_targetAmount": "Target amount",
+      "terms_minimumAmount": "Minimum amount",
+      "terms_maximumAmount": "Maximum amount",
+      "terms_nominalValue": "Nominal value of a unit",
+      "terms_totalUnits": "Total number of units",
+      "terms_distributionFrequency": "Distribution frequency",
+      "terms_issueDate": "Issue date",
+      "terms_maturityDate": "Maturity date",
+      "terms_subscriptionStartDate": "Subscriptions open on",
+      "terms_subscriptionEndDate": "Subscriptions close on",
+      "terms_minSubscriptionAmount": "Minimum subscription",
+      "terms_maxAmountPerInvestor": "Maximum per investor"
+    },
+    "frequencies": {
+      "MONTHLY": "Monthly",
+      "QUARTERLY": "Quarterly",
+      "SEMI_ANNUAL": "Semi-annual",
+      "ANNUAL": "Annual",
+      "BULLET": "At maturity (bullet)"
+    },
+    "dayCountOptions": {
+      "ACT_365F": "Actual/365 fixed",
+      "30E_360": "30E/360"
+    },
+    "roundingMethodOptions": {
+      "HALF_EVEN": "To the nearest, halves to even (banker’s)",
+      "HALF_UP": "To the nearest, halves up",
+      "DOWN": "Down"
+    },
+    "businessDayConventionOptions": {
+      "FOLLOWING": "Next business day",
+      "NONE": "Same day"
+    },
+    "documentKinds": {
+      "TERM_SHEET": "Term sheet",
+      "MEMORANDUM": "Memorandum",
+      "TERMS_AND_CONDITIONS": "Terms and conditions",
+      "MARKETING": "Marketing document",
+      "INVESTOR_DOCUMENT": "Investor document"
+    },
+    "wizard": {
+      "description": "Draft {code} — saved automatically as you type.",
+      "saving": "Saving…",
+      "saved": "Saved",
+      "saveFailed": "Not saved — see below",
+      "steps": "Steps of the wizard",
+      "stepNames": {
+        "GENERAL": "General",
+        "FINANCIAL": "Financial terms",
+        "ELIGIBILITY": "Eligibility",
+        "SERVICING": "Servicing",
+        "DOCUMENTS": "Documents",
+        "REVIEW": "Review"
+      },
+      "previous": "Previous step",
+      "next": "Next step",
+      "notEditable": "This issuance is no longer a draft: it cannot be edited.",
+      "openIssuance": "Open the issuance",
+      "invalidNumber": "Type a number, e.g. 1000 or 1000.50",
+      "financialHelp": "Amounts in {currency}. Target = nominal value × number of units.",
+      "principalAtMaturity": "The principal is repaid at maturity.",
+      "documentsHelp": "Add the term sheet, memorandum, terms and marketing documents (demonstration files).",
+      "noDocuments": "No document yet.",
+      "checks": "Consistency checks",
+      "consistent": "Everything is consistent: the issuance can be submitted.",
+      "fix": "Fix"
+    },
+    "actions": {
+      "edit": "Continue editing",
+      "commentRequired": "Comment (required)",
+      "submit": "Submit for approval",
+      "submitTitle": "Submit the issuance?",
+      "submitDescription": "Another Issuer Administrator will approve it. The draft can no longer be edited, unless it is sent back.",
+      "approve": "Approve",
+      "approveTitle": "Approve the issuance?",
+      "approveDescription": "Its terms and eligibility rules become final. Investors can then be invited.",
+      "open-subscription": "Open subscriptions",
+      "open-subscriptionTitle": "Open subscriptions?",
+      "open-subscriptionDescription": "Invited investors are told and can subscribe until the end date.",
+      "close-subscription": "Close subscriptions",
+      "close-subscriptionTitle": "Close subscriptions?",
+      "close-subscriptionDescription": "No new subscription will be accepted. The allocation comes next.",
+      "return-to-draft": "Send back to draft",
+      "return-to-draftTitle": "Send the issuance back to draft?",
+      "return-to-draftDescription": "The person who submitted it will correct it and submit it again.",
+      "cancel": "Cancel the issuance",
+      "cancelTitle": "Cancel the issuance?",
+      "cancelDescription": "This cannot be undone. Subscriptions in progress are cancelled and investors are told."
+    },
+    "tabs": {
+      "label": "Issuance sections",
+      "overview": "Overview",
+      "invitations": "Invited investors",
+      "documents": "Documents",
+      "history": "History",
+      "allocation": "Allocation",
+      "registry": "Registry",
+      "coupons": "Coupons"
+    },
+    "invitations": {
+      "investor": "Investor",
+      "invite": "Invite",
+      "help": "The eligibility rules of the issuance are checked first: an investor who does not meet them is not invited.",
+      "refused": "This investor cannot be invited:",
+      "closed": "Investors are invited once the issuance is approved, until subscriptions close.",
+      "none": "No investor invited yet.",
+      "status": {
+        "INVITED": "invited",
+        "REVOKED": "invitation revoked"
+      },
+      "revoke": "Revoke",
+      "revokeTitle": "Revoke the invitation of {name}?",
+      "revokeDescription": "The investor no longer sees the issuance. Its existing subscriptions are kept."
+    },
+    "seeSubscriptions": "See the subscriptions"
+  },
+  "subscriptions": {
+    "title": "Subscriptions",
+    "description": "Subscription requests of the investors: review them, then approve or reject them.",
+    "ownTitle": "My subscriptions",
+    "ownDescription": "Your subscription requests and where they stand.",
+    "caption": "Subscriptions, newest first",
+    "empty": "No subscription yet.",
+    "allStatuses": "All statuses",
+    "allIssuances": "Show every issuance",
+    "back": "Back to the subscriptions",
+    "detailTitle": "Subscription to {code}",
+    "summary": "Request",
+    "history": "History",
+    "system": "System",
+    "unknownUser": "Unknown user",
+    "rejectionReason": "Reason for the rejection:",
+    "cancellationReason": "Reason for the cancellation:",
+    "issuanceCancelled": "the issuance was cancelled.",
+    "eligibilityChecked": "Eligibility checked and recorded when the request was submitted.",
+    "columns": {
+      "issuance": "Issuance",
+      "investor": "Investor",
+      "units": "Units",
+      "amount": "Amount",
+      "status": "Status",
+      "submittedAt": "Submitted on"
+    },
+    "fields": {
+      "issuance": "Issuance",
+      "investor": "Investor",
+      "units": "Units requested",
+      "amount": "Amount",
+      "paymentReference": "Payment reference",
+      "submittedAt": "Submitted on",
+      "decidedAt": "Decided on",
+      "comment": "Comment:",
+      "allocatedUnits": "Units allocated",
+      "amountDue": "Amount due"
+    },
+    "actions": {
+      "start-review": "Start the review",
+      "start-reviewTitle": "Start the review of this subscription?",
+      "start-reviewDescription": "The subscription moves to “Under review”. An administrator can then approve or reject it.",
+      "approve": "Approve",
+      "approveTitle": "Approve this subscription?",
+      "approveDescription": "The eligibility of the investor is checked again. The investor is told that the subscription is approved.",
+      "reject": "Reject",
+      "rejectTitle": "Reject this subscription?",
+      "rejectDescription": "The investor is told of the rejection and sees the reason.",
+      "cancel": "Cancel the subscription",
+      "cancelTitle": "Cancel this subscription?",
+      "cancelDescription": "The request is withdrawn and will not be processed. This cannot be undone.",
+      "cancelByIssuerDescription": "The investor is told of the cancellation and sees the reason. This cannot be undone.",
+      "reasonRequired": "Reason (required, shown to the investor)"
+    },
+    "opportunities": {
+      "title": "Investment opportunities",
+      "description": "The issuances you are invited to. Read the terms and documents before subscribing.",
+      "caption": "Issuances you are invited to",
+      "empty": "You are not invited to any issuance yet.",
+      "back": "Back to the opportunities",
+      "terms": "Main terms",
+      "documents": "Documents",
+      "subscribe": "Subscribe",
+      "notOpen": "Subscriptions to this issuance are not open.",
+      "noRight": "Your account cannot subscribe."
+    },
+    "form": {
+      "units": "Number of units",
+      "unitsHint": "Nominal value {nominal} per unit. Minimum subscription: {minimum}.",
+      "unitsInvalid": "Enter a whole number of units, greater than zero.",
+      "amount": "Amount to pay:",
+      "paymentReference": "Payment reference (optional)",
+      "paymentReferenceHint": "For example the account the payment will come from. No real payment is made in this demo.",
+      "comment": "Comment (optional)",
+      "documentsAccepted": "I have read and accept the documents of the issuance.",
+      "eligibilityDeclared": "I declare that I meet the eligibility conditions of the issuance.",
+      "submit": "Submit the subscription",
+      "refusedTitle": "Your subscription was not sent.",
+      "refusedHelp": "The eligibility rules of the issuance are not met. The request stays as a draft; contact the issuer or update your profile."
+    },
+    "notAllocated": "no unit could be allocated.",
+    "cancelledByInvestor": "cancelled by the investor.",
+    "payment": {
+      "title": "Payment (fictitious)",
+      "fictitious": "No real payment is made in this demonstration: the payment is simulated.",
+      "none": "No payment is expected yet.",
+      "awaiting": "Waiting for the payment of {amount}.",
+      "status": {
+        "PENDING": "Payment of {amount} expected.",
+        "PREPARED": "Payment of {amount} prepared: waiting for the confirmation of an administrator.",
+        "CONFIRMED": "Payment of {amount} confirmed.",
+        "FAILED": "The payment of {amount} will not be received."
+      },
+      "reference": "Reference:",
+      "confirmedOn": "Confirmed on {date}.",
+      "prepare": "Prepare the payment confirmation",
+      "prepareTitle": "Prepare the payment confirmation?",
+      "prepareDescription": "The payment of {amount} is registered with the (fictitious) bank. Another Issuer Administrator then confirms it.",
+      "confirm": "Confirm the payment",
+      "confirmTitle": "Confirm the payment received?",
+      "confirmDescription": "The payment of {amount} is confirmed and the {units} units become available to the investor. This cannot be undone.",
+      "fourEyes": "You prepared this payment: another Issuer Administrator must confirm it."
+    }
+  },
+  "allocation": {
+    "none": "No allocation has been prepared yet. Every subscription must be approved or rejected first.",
+    "notClosed": "The allocation is prepared once subscriptions are closed.",
+    "prepare": "Prepare the allocation",
+    "previousRounds": "Rejected allocations",
+    "allocatedTotal": "{units} units allocated",
+    "roundTitle": "Manual allocation",
+    "allocatedUnits": "Units allocated",
+    "unitsOf": "{units} of {total}",
+    "allocatedAmount": "Amount allocated",
+    "requestedUnits": "Units requested",
+    "linesCaption": "Units allocated to each approved subscription",
+    "columns": {
+      "investor": "Investor",
+      "requested": "Requested",
+      "allocated": "Allocated",
+      "amount": "Amount"
+    },
+    "unitsFor": "Units allocated to {investor}",
+    "overRequest": "More than requested",
+    "supplyDetail": "({units} units for {total} available)",
+    "justification": "Justification (minimum amount not reached)",
+    "justificationHint": "The minimum amount of the issuance is {minimum}. To go on anyway, explain why; the justification is kept in the audit log.",
+    "proposedBy": "Proposed by {name} on {date}.",
+    "validatedBy": "Validated by {name} on {date}.",
+    "save": "Save",
+    "saveFirst": "Save your changes before proposing the allocation.",
+    "propose": "Propose for validation",
+    "proposeTitle": "Propose this allocation?",
+    "proposeDescription": "The allocation can no longer be changed. Another Issuer Administrator validates or rejects it.",
+    "validate": "Validate the allocation",
+    "validateTitle": "Validate this allocation?",
+    "validateDescription": "{units} units are created in the registry, allocated to the investors and blocked until their payment is confirmed. This cannot be undone.",
+    "fourEyes": "You proposed this allocation: another Issuer Administrator must validate it.",
+    "reject": "Reject",
+    "rejectTitle": "Reject this allocation?",
+    "rejectDescription": "The preparer is told and sees your comment. A new allocation can then be prepared.",
+    "abandon": "Abandon the draft",
+    "abandonTitle": "Abandon this draft?",
+    "abandonDescription": "The draft is kept in the history as rejected. A new allocation can then be prepared.",
+    "commentRequired": "Comment (required)"
+  },
+  "registry": {
+    "title": "Registry",
+    "description": "Who holds the units of each issuance, and every movement of the ledger. The ledger cannot be changed: corrections are new entries.",
+    "issuance": "Issuance",
+    "noIssuance": "No issuance has been allocated yet.",
+    "positions": "Positions",
+    "positionsCaption": "Positions of the issuance",
+    "heldByInvestors": "{held} of {total} units held by investors.",
+    "heldByInvestorsNoTotal": "{held} units held by investors.",
+    "noPosition": "No position yet.",
+    "treasury": "Issuer treasury",
+    "otherInvestor": "Another investor",
+    "ledger": "Ledger movements",
+    "ledgerHelp": "Each movement carries the hash of the previous one, so any alteration can be detected.",
+    "ledgerCaption": "Ledger movements, newest first",
+    "noEntry": "No movement yet.",
+    "columns": {
+      "account": "Account",
+      "held": "Held",
+      "blocked": "Blocked",
+      "available": "Available",
+      "acquisitionAmount": "Acquisition amount",
+      "effectiveDate": "Date",
+      "type": "Movement",
+      "from": "From",
+      "to": "To",
+      "quantity": "Units",
+      "hash": "Hash",
+      "actions": "Actions"
+    },
+    "types": {
+      "ISSUANCE": "Issuance of units",
+      "ALLOCATION": "Allocation",
+      "TRANSFER": "Transfer",
+      "BLOCK": "Block",
+      "UNBLOCK": "Unblock",
+      "REDEMPTION": "Redemption",
+      "CANCELLATION": "Cancellation",
+      "CORRECTION": "Correction"
+    },
+    "reconciliation": {
+      "consistent": "Registry consistent: {entries} movements checked at {date}, positions and hash chain match.",
+      "inconsistent": "The registry is inconsistent. Do not change it: tell the compliance officer.",
+      "checkAgain": "Check again",
+      "details": {
+        "NEGATIVE": "A position is negative (invariant {invariant}).",
+        "BLOCKED_ABOVE_HELD": "More units are blocked than held (invariant {invariant}).",
+        "POSITION_DIFFERS_FROM_LEDGER": "A position differs from the ledger movements (invariant {invariant}).",
+        "ALLOCATED_ABOVE_TOTAL_UNITS": "Investors hold more units than the issuance has (invariant {invariant}).",
+        "SEQUENCE_GAP": "A movement is missing before number {sequence} (invariant {invariant}).",
+        "HASH_MISMATCH": "Movement {sequence} was altered: its hash does not match (invariant {invariant})."
+      }
+    },
+    "corrections": {
+      "title": "Corrections",
+      "status": {
+        "PROPOSED": "To approve",
+        "APPROVED": "Approved",
+        "REJECTED": "Rejected"
+      },
+      "requestedBy": "Proposed by {name} on {date}",
+      "decidedBy": "Decided by {name}",
+      "replacements": "{count, plural, one {# replacement movement} other {# replacement movements}}",
+      "fourEyes": "You proposed this correction: a compliance officer or another administrator must decide.",
+      "approve": "Approve",
+      "approveTitle": "Approve this correction?",
+      "approveDescription": "The movement is reversed by a counter-entry and the replacement movements are written. The original movement is kept. This cannot be undone.",
+      "reject": "Reject",
+      "rejectTitle": "Reject this correction?",
+      "rejectDescription": "The administrator who proposed it is told and sees your comment.",
+      "commentRequired": "Comment (required)",
+      "correct": "Correct",
+      "proposeTitle": "Correct movement #{sequence}",
+      "proposeDescription": "The {quantity} units of this movement are sent back by a counter-entry. You can add the movement that should have been written. Another person approves the correction.",
+      "reason": "Reason (required)",
+      "replacement": "Replacement movement (optional)",
+      "from": "From",
+      "to": "To",
+      "quantity": "Units",
+      "noAccount": "—",
+      "propose": "Propose the correction"
+    }
+  },
+  "transfers": {
+    "title": "Transfers",
+    "description": "Transfer requests between investors. Approve or reject them after the compliance review.",
+    "caption": "Transfer requests, newest first",
+    "empty": "No transfer request.",
+    "allStatuses": "All statuses",
+    "back": "Back to the transfers",
+    "backToPortfolio": "Back to the portfolio",
+    "detailTitle": "Transfer of {code} units",
+    "detailDescription": "{quantity} units",
+    "summary": "Request",
+    "history": "History",
+    "system": "System",
+    "unknownUser": "Unknown user",
+    "rejectionReason": "Reason for the rejection:",
+    "cancellationReason": "Reason for the cancellation:",
+    "blockedWhileReviewed": "The units are blocked while the request is reviewed.",
+    "recipientChecked": "The recipient's eligibility was checked and recorded.",
+    "columns": {
+      "issuance": "Issuance",
+      "parties": "From → to",
+      "recipientCode": "Recipient code",
+      "quantity": "Units",
+      "status": "Status",
+      "updatedAt": "Last change"
+    },
+    "fields": {
+      "issuance": "Issuance",
+      "recipientCode": "Recipient code",
+      "from": "From",
+      "to": "To",
+      "quantity": "Units",
+      "indicativePrice": "Indicative price per unit",
+      "submittedAt": "Submitted on",
+      "reviewedAt": "Decided on"
+    },
+    "actions": {
+      "approve": "Approve and execute",
+      "approveTitle": "Approve this transfer?",
+      "approveDescription": "The recipient's eligibility is checked again, then the units move to the recipient at once. This cannot be undone.",
+      "reject": "Reject",
+      "rejectTitle": "Reject this transfer?",
+      "rejectDescription": "The units become available to the sender again, who sees the reason.",
+      "cancel": "Cancel the request",
+      "cancelTitle": "Cancel this transfer request?",
+      "cancelDescription": "The request is withdrawn and the units become available again.",
+      "cancelByIssuerDescription": "The request is cancelled, the units become available to the sender again, who sees the reason.",
+      "reasonRequired": "Reason (required, shown to the sender)"
+    },
+    "portfolio": {
+      "title": "Portfolio",
+      "description": "Your positions in the issuances, and your transfer requests.",
+      "caption": "Your positions",
+      "empty": "You hold no units yet.",
+      "requests": "My transfer requests",
+      "transfer": "Transfer",
+      "columns": {
+        "issuance": "Issuance",
+        "held": "Held",
+        "blocked": "Blocked",
+        "available": "Available",
+        "acquisitionAmount": "Amount invested",
+        "actions": "Actions"
+      }
+    },
+    "form": {
+      "title": "Transfer units",
+      "description": "Transfer units to another investor with the recipient code it gave you. A compliance officer reviews every request.",
+      "noPosition": "You hold no units of this issuance.",
+      "holding": "{issuance}: {available} units available out of {held} held.",
+      "recipientCode": "Recipient code",
+      "recipientCodeHint": "The code shown in the recipient's profile, e.g. VA-ABCD-EFGH.",
+      "quantity": "Number of units",
+      "quantityInvalid": "Enter a whole number of units, between 1 and {available}.",
+      "indicativePrice": "Indicative price per unit (optional)",
+      "indicativePriceHint": "For information only: no payment is made through the platform.",
+      "priceInvalid": "Enter a positive amount, e.g. 1010.50.",
+      "submit": "Submit the request",
+      "back": "Back to the portfolio"
+    }
+  },
+  "distributions": {
+    "title": "Distributions",
+    "description": "Coupons and repayments of the issuances: calculated on a snapshot of the registry, approved with four eyes, paid through a fictitious instruction.",
+    "ownTitle": "Distributions",
+    "ownDescription": "The coupons paid to you.",
+    "caption": "Distributions, newest payment first",
+    "empty": "No distribution yet.",
+    "allStatuses": "All statuses",
+    "back": "Back to the distributions",
+    "detailTitle": "{code} — payment no. {sequence}",
+    "statusComment": "Comment:",
+    "figures": "Calculation",
+    "history": "History",
+    "system": "System",
+    "unknownUser": "Unknown user",
+    "lines": "Lines per investor",
+    "ownLine": "Your line",
+    "linesCaption": "Gross amount of each holder at the record date",
+    "noLine": "No line: not calculated yet.",
+    "downloadCsv": "Download the CSV",
+    "fourEyes": "You submitted this distribution: another Issuer Administrator must approve it.",
+    "paymentFourEyes": "You prepared this payment: another Issuer Administrator must confirm it.",
+    "instruction": {
+      "GENERATED": "Fictitious payment instruction generated: {total}, {lines} lines.",
+      "PREPARED": "Payment prepared: {total}, waiting for the confirmation of another administrator.",
+      "CONFIRMED": "Payment of {total} confirmed.",
+      "FAILED": "The payment of {total} was not received: generate a new instruction."
+    },
+    "columns": {
+      "issuance": "Issuance",
+      "type": "Type",
+      "paymentDate": "Payment date",
+      "total": "Total",
+      "status": "Status",
+      "investor": "Investor",
+      "quantity": "Units at the record date",
+      "unrounded": "Before rounding",
+      "amount": "Gross amount",
+      "anomaly": "Anomaly"
+    },
+    "fields": {
+      "period": "Period",
+      "recordDate": "Record date",
+      "paymentDate": "Payment date",
+      "dayCount": "Day count",
+      "periodFraction": "Period fraction",
+      "rate": "Rate",
+      "nominalValue": "Nominal value",
+      "total": "Total gross amount",
+      "roundingDifference": "Rounding difference",
+      "beneficiaries": "Beneficiaries",
+      "calculationVersion": "Calculation version"
+    },
+    "dayCounts": {
+      "ACT_365F": "ACT/365 Fixed",
+      "30E_360": "30E/360"
+    },
+    "anomalies": {
+      "ZERO_AMOUNT": "Rounded to zero"
+    },
+    "recalculation": {
+      "run": "Calculate again from the snapshot",
+      "identical": "Same result: the calculation is reproducible.",
+      "different": "{count, plural, one {# line differs} other {# lines differ}}: check the registry."
+    },
+    "actions": {
+      "calculate": {
+        "label": "Calculate",
+        "title": "Calculate this distribution?",
+        "description": "A snapshot of the registry is taken at the record date, then the gross amount of each holder is calculated."
+      },
+      "submit-for-review": {
+        "label": "Submit for approval",
+        "title": "Submit this distribution?",
+        "description": "Another Issuer Administrator will review and approve it."
+      },
+      "approve": {
+        "label": "Approve",
+        "title": "Approve this distribution?",
+        "description": "The amounts can no longer change. The payment instruction can then be generated."
+      },
+      "payment-instruction": {
+        "label": "Generate the payment instruction",
+        "title": "Generate the payment instruction?",
+        "description": "A fictitious payment instruction and its CSV file are generated. No real payment is made."
+      },
+      "payment-instruction/prepare": {
+        "label": "Prepare the payment",
+        "title": "Prepare the payment?",
+        "description": "The instruction is sent to the (fictitious) bank. Another Issuer Administrator then confirms it."
+      },
+      "payment-instruction/confirm": {
+        "label": "Confirm the payment",
+        "title": "Confirm the payment?",
+        "description": "The investors are told that the distribution was paid. This cannot be undone."
+      },
+      "return-to-draft": {
+        "label": "Send back to draft",
+        "title": "Send this distribution back?",
+        "description": "It will have to be calculated again. The preparer sees your comment."
+      },
+      "cancel": {
+        "label": "Cancel the distribution",
+        "title": "Cancel this distribution?",
+        "description": "The scheduled payment can then be distributed again."
+      },
+      "commentRequired": "Comment (required)"
+    },
+    "schedule": {
+      "caption": "Coupons and principal of the issuance",
+      "empty": "No schedule: the issuance is not active yet.",
+      "create": "Create the distribution",
+      "types": {
+        "COUPON": "Coupon",
+        "PRINCIPAL": "Principal"
+      },
+      "status": {
+        "SCHEDULED": "Scheduled",
+        "DISTRIBUTED": "Distributed",
+        "CANCELLED": "Cancelled"
+      },
+      "columns": {
+        "type": "Type",
+        "period": "Period",
+        "recordDate": "Record date",
+        "paymentDate": "Payment date",
+        "status": "Status",
+        "actions": "Actions"
+      }
+    },
+    "activation": {
+      "activate": "Activate the issuance",
+      "title": "Activate this issuance?",
+      "description": "Every allocated subscription must be paid. The coupon schedule is then generated from the terms."
+    },
+    "earlyRedemption": {
+      "open": "Early redemption",
+      "title": "Redeem the whole issuance early?",
+      "description": "The coupons and the principal not paid yet from this date on are cancelled, and the principal is scheduled on it. Coupons due before it are distributed first. No accrued interest is paid.",
+      "date": "Repayment date",
+      "confirm": "Schedule the repayment"
+    }
+  },
+  "reporting": {
+    "dashboard": {
+      "title": "Dashboard",
+      "description": "The figures of your organisation and what waits for a decision.",
+      "administered": "Assets administered",
+      "issuances": "Issuances",
+      "activeIssuances": "{count, plural, one {# active} other {# active}}",
+      "subscribed": "Subscribed",
+      "subscriptionRate": "{rate} of the targets",
+      "allocated": "Allocated",
+      "investors": "Investors",
+      "investorsDetail": "{holders} holders · {eligible} eligible · {rate} validated",
+      "averageTicket": "Average ticket",
+      "distributed": "Distributed",
+      "pending": "Operations waiting",
+      "pendingDetail": "{subscriptions} subscriptions · {payments} payments · {transfers} transfers",
+      "kycExpiring": "{count, plural, one {# KYC/KYB expires} other {# KYC/KYB expire}} within 30 days.",
+      "seeInvestors": "See the investors",
+      "upcoming": "Next payments",
+      "noUpcoming": "No payment within the next 90 days.",
+      "overdue": "due",
+      "activity": "Latest activity",
+      "system": "System",
+      "fullLog": "Open the audit log",
+      "issuanceTable": "Issuances",
+      "columns": {
+        "issuance": "Issuance",
+        "status": "Status",
+        "target": "Target",
+        "subscribed": "Subscribed",
+        "progress": "Progress",
+        "holders": "Holders",
+        "maturity": "Maturity"
+      }
+    },
+    "tasks": {
+      "title": "To do",
+      "description": "The decisions waiting for you, the most urgent first. What you initiated yourself waits for someone else.",
+      "empty": "Nothing waits for you.",
+      "emptyDescription": "New requests will appear here.",
+      "due": "Payment on {date}",
+      "waitingSince": "Waiting since {date}",
+      "kinds": {
+        "SUBSCRIPTION_TO_REVIEW": "Subscription to take under review",
+        "SUBSCRIPTION_TO_DECIDE": "Subscription to approve or reject",
+        "SUBSCRIPTION_PAYMENT_TO_CONFIRM": "Subscription payment to confirm",
+        "KYC_TO_DECIDE": "KYC/KYB case to decide",
+        "ISSUANCE_TO_APPROVE": "Issuance to approve",
+        "ALLOCATION_TO_VALIDATE": "Allocation to validate",
+        "TRANSFER_TO_REVIEW": "Transfer to review",
+        "CORRECTION_TO_APPROVE": "Registry correction to approve",
+        "DISTRIBUTION_TO_APPROVE": "Distribution to approve",
+        "DISTRIBUTION_PAYMENT_TO_CONFIRM": "Distribution payment to confirm"
+      }
+    },
+    "platform": {
+      "title": "Metrics",
+      "description": "Activity of the whole platform, every organisation together.",
+      "organisations": "Organisations",
+      "activeUsers": "Active users",
+      "issuances": "Issuances",
+      "active": "{count} active",
+      "investors": "Investors",
+      "nominalAdministered": "Nominal value administered",
+      "ledgerOperations": "Registry operations",
+      "failures": "Failed operations (30 days)",
+      "decisionTime": "Average subscription decision time",
+      "hours": "{hours} h"
+    },
+    "portfolio": {
+      "nominalHeld": "Nominal value held",
+      "positions": "Positions",
+      "received": "Distributions received",
+      "nextPayment": "Next payment",
+      "pending": "Requests in progress",
+      "kinds": {
+        "SUBSCRIPTION": "Subscription to {code}",
+        "TRANSFER": "Transfer of {code} units"
+      }
+    },
+    "position": {
+      "back": "Back to the portfolio",
+      "summary": "Position",
+      "issuer": "Issuer",
+      "held": "Units held",
+      "blocked": "Units blocked",
+      "nominalValue": "Nominal value",
+      "nominalAmount": "Nominal amount held",
+      "invested": "Amount invested",
+      "rate": "Rate",
+      "frequency": "Coupons",
+      "maturity": "Maturity",
+      "nextPayment": "Next payment",
+      "distributions": "Distributions received",
+      "noDistribution": "No distribution received yet.",
+      "movements": "Movements",
+      "noMovement": "No movement.",
+      "documents": "Documents of the issuance",
+      "documentsFromIssuer": "The documents of this issuance are available from the issuer.",
+      "noDocument": "No document for this issuance."
+    },
+    "transactions": {
+      "title": "Transactions",
+      "description": "Every movement of your units, in every issuance.",
+      "caption": "Your movements, newest first",
+      "empty": "No movement yet.",
+      "issuance": "Issuance"
+    },
+    "exports": {
+      "title": "Reports",
+      "description": "CSV exports of the organisation’s data, generated in the background. You are notified when an export is ready.",
+      "kind": "Export",
+      "issuance": "Issuance",
+      "allIssuances": "All issuances",
+      "submit": "Request the export",
+      "hint": "Files are kept as internal documents of the organisation. They contain fictitious demonstration data.",
+      "caption": "Your exports",
+      "empty": "You have not requested any export yet.",
+      "download": "Download",
+      "kinds": {
+        "REGISTRY": "Registry (positions)",
+        "SUBSCRIPTIONS": "Subscriptions",
+        "DISTRIBUTIONS": "Distribution lines",
+        "AUDIT": "Audit log"
+      },
+      "columns": {
+        "kind": "Export",
+        "issuance": "Issuance",
+        "createdAt": "Requested on",
+        "rows": "Rows",
+        "status": "Status",
+        "file": "File"
+      }
+    }
+  },
+  "landing": {
+    "metaTitle": "Private asset lifecycle platform",
+    "nav": {
+      "label": "Main sections",
+      "lifecycle": "Lifecycle",
+      "security": "Security",
+      "calculator": "Business case",
+      "contact": "Contact",
+      "signIn": "Sign in",
+      "openPortal": "Open my portal",
+      "technology": "Technology",
+      "solution": "Solution",
+      "projects": "Projects"
+    },
+    "demoNotice": "Demonstration environment: all data is fictitious and no real payment is made.",
+    "hero": {
+      "eyebrow": "Software for private bond issuers and asset managers",
+      "title": "Issue and manage private bonds,",
+      "titleAccent": "from first draft to final redemption.",
+      "subtitle": "Veris Assets structures your bonds and notes, qualifies your professional investors, collects subscriptions and keeps the registry. Coupons, redemptions and reporting follow — with no spreadsheet.",
+      "primaryCta": "See the demo",
+      "secondaryCta": "Talk to the team"
+    },
+    "preview": {
+      "label": "An illustrative issuance, as shown in the product",
+      "title": "Northwind Green Notes",
+      "photoAlt": "A ground-mounted solar power plant in the countryside, rows of panels on grass",
+      "subtitle": "5-year notes · 5 % semi-annual coupon",
+      "status": "Active",
+      "nominal": "Nominal administered",
+      "holders": "Holders",
+      "nextCoupon": "Next coupon",
+      "subscribed": "Subscribed",
+      "registry": "Registry",
+      "investor": "Investor",
+      "units": "Units",
+      "coupon": "Last coupon",
+      "fourEyes": "Coupon approved with four eyes",
+      "ledger": "Ledger verified — hash chain intact",
+      "description": "Helps finance a 12 MWp solar farm on former industrial land near Toulouse, France."
+    },
+    "lifecycle": {
+      "eyebrow": "Lifecycle",
+      "title": "Two journeys, one registry",
+      "subtitle": "From the first draft to the last redemption, every step follows clear statuses, and the right person decides at the right time.",
+      "structure": {
+        "title": "Structure",
+        "text": "Create the issuance in a guided wizard: terms, schedule, eligibility rules and documents, approved with four eyes."
+      },
+      "onboard": {
+        "title": "Onboard",
+        "text": "Qualify investors with KYC/KYB files, beneficial owners and eligibility checks explained in plain language."
+      },
+      "subscribe": {
+        "title": "Subscribe",
+        "text": "Investors subscribe online; the issuer reviews, approves and follows each request."
+      },
+      "allocate": {
+        "title": "Allocate",
+        "text": "Allocate oversubscribed issuances fairly, validate with four eyes and confirm fictitious payments."
+      },
+      "register": {
+        "title": "Register",
+        "text": "Keep the registry of positions, blockings and transfers, reconciled every day."
+      },
+      "service": {
+        "title": "Service and report",
+        "text": "Calculate coupons and redemptions from a registry snapshot, generate payment instructions, notices and exports."
+      },
+      "journeys": "Journeys",
+      "investor": {
+        "tab": "Investor",
+        "lead": "Subscribing without the paperwork: five steps, all online.",
+        "invitation": {
+          "title": "Accept the invitation and verify your identity",
+          "text": "Your issuer invites you. Create your account and upload your KYC/KYB file; the issuer's compliance team reviews it."
+        },
+        "status": {
+          "title": "Confirm your professional investor status",
+          "text": "Your classification is checked against the eligibility rules of the issuance before you can subscribe."
+        },
+        "documents": {
+          "title": "Read the documents and enter your amount",
+          "text": "Term sheet, memorandum and terms are in your space. Choose the amount you wish to subscribe."
+        },
+        "signature": {
+          "title": "Sign your subscription form electronically",
+          "text": "Sign online in a few clicks (simulated in the demo). The issuer then reviews and allocates."
+        },
+        "follow": {
+          "title": "Track positions, coupons and documents",
+          "text": "Follow your holdings, coupon payments and notices from your investor space."
+        }
+      },
+      "issuer": {
+        "tab": "Issuer and asset manager",
+        "lead": "Six steps, each with its statuses, its controls and its audit trail."
+      }
+    },
+    "audiences": {
+      "eyebrow": "For every role",
+      "title": "One platform, three points of view",
+      "issuers": {
+        "title": "Issuers and asset managers",
+        "p1": "A dashboard and a \"To do\" queue instead of spreadsheets",
+        "p2": "Allocation, registry and coupons with no manual reconciliation",
+        "p3": "CSV exports and generated documents, ready to send",
+        "lead": "Raise and service private debt without the back-office burden."
+      },
+      "investors": {
+        "title": "Professional investors",
+        "p1": "One portfolio view: positions, coupons and documents",
+        "p2": "Subscriptions and transfers online, checked before execution",
+        "p3": "Notices and documents in their language",
+        "lead": "Find the real-asset issuances you are invited to, and follow them in one place."
+      },
+      "compliance": {
+        "title": "Compliance and audit",
+        "p1": "KYC/KYB review with expiry alerts",
+        "p2": "Eligibility checked before every subscription and transfer",
+        "p3": "A complete, read-only audit trail",
+        "lead": "Control every step, and show how it was done."
+      },
+      "signIn": "Sign in to the demo",
+      "technology": "How the platform is built",
+      "subtitle": "Everyone works from the same registry, and sees only what they should."
+    },
+    "security": {
+      "eyebrow": "Security",
+      "title": "Security and traceability by design",
+      "subtitle": "Controls are built into the platform, not added afterwards.",
+      "mfa": {
+        "title": "Strong authentication",
+        "text": "Two-factor authentication for administrators and compliance officers, sessions that expire, accounts locked after repeated failures."
+      },
+      "isolation": {
+        "title": "Tenant isolation",
+        "text": "The organisation is always determined by the server, and the database itself refuses access to another organisation's data."
+      },
+      "ledger": {
+        "title": "Tamper-evident registry",
+        "text": "Movements are never modified: corrections are counter-entries, and a daily check verifies the whole chain."
+      },
+      "audit": {
+        "title": "Complete audit trail",
+        "text": "Who did what, when and from where, with values before and after, sensitive data masked."
+      },
+      "documents": {
+        "title": "Controlled documents",
+        "text": "File types checked on their content, temporary download links, confidential files traced."
+      },
+      "hosting": {
+        "title": "European hosting",
+        "text": "The demonstration runs in a European data centre, with daily backups."
+      },
+      "note": "An architecture designed to integrate your compliance controls, and compatible with a future ERC-3643 integration. No blockchain is required to run the platform.",
+      "learnMore": "Learn more about the technology"
+    },
+    "contact": {
+      "eyebrow": "Contact",
+      "title": "Let's talk about your issuances",
+      "subtitle": "Tell us about your needs: we will come back to you with a demonstration based on your case.",
+      "name": "Name",
+      "email": "Work email",
+      "company": "Company",
+      "companyHint": "Optional",
+      "message": "Message",
+      "consent": "I agree to be contacted about this request.",
+      "honeypot": "Leave this field empty",
+      "submit": "Send the message",
+      "sending": "Sending…",
+      "success": "Thank you: your message has been sent. We will come back to you soon.",
+      "privacy": "Your message is sent by email to the team; the platform does not store it.",
+      "errors": {
+        "name": "Enter your name.",
+        "email": "Enter a valid email address.",
+        "message": "Enter a message of at least 10 characters.",
+        "consent": "Please agree to be contacted."
+      },
+      "demoTitle": "Explore the demonstration now",
+      "demoText": "Sign in with a demo account — issuer administrator, compliance officer, auditor or investor. The sign-in page lists the accounts and their roles.",
+      "demoPoints": {
+        "p1": "Fictitious data, reset at any time",
+        "p2": "No real payment, no real KYC",
+        "p3": "In English and French"
+      },
+      "demoCta": "Open the demo"
+    },
+    "footer": {
+      "tagline": "Private asset lifecycle management for asset managers and issuers.",
+      "demo": "Demonstration environment — fictitious data, no real payment, no legal value.",
+      "rights": "© {year} Veris Assets"
+    },
+    "professionalOnly": "For professional investors only.",
+    "illustrative": {
+      "badge": "Illustrative example",
+      "yieldNotice": "Illustrative target yield, not guaranteed. Investing in private assets carries a risk of capital loss and illiquidity."
+    },
+    "solution": {
+      "eyebrow": "What Veris Assets does",
+      "title": "One system of record for your private bonds",
+      "subtitle": "Built for issuers and asset managers who structure, issue and service private debt: real estate, green energy and other real assets.",
+      "problem": {
+        "title": "The problem",
+        "text": "Illiquid markets — private debt, real estate, green bonds — carry high intermediation costs, slow settlement and a heavy back office run on spreadsheets and emails."
+      },
+      "approach": {
+        "title": "Our approach",
+        "text": "Veris Assets replaces spreadsheets and manual reconciliations with one guided journey: structure, qualify, subscribe, allocate, register, service."
+      },
+      "goal": {
+        "title": "The goal",
+        "text": "A single system of record for issuers and asset managers, with four-eyes control and a complete audit trail. No blockchain required."
+      },
+      "assets": {
+        "title": "For the projects that finance the real economy",
+        "realEstate": {
+          "title": "Real estate",
+          "text": "Residential, logistics, office conversions and energy renovation."
+        },
+        "greenEnergy": {
+          "title": "Green energy",
+          "text": "Solar, wind, storage and energy efficiency."
+        },
+        "realAssets": {
+          "title": "Other real assets",
+          "text": "Charging networks, local infrastructure and other income-producing assets."
+        }
+      }
+    },
+    "projects": {
+      "eyebrow": "Illustrative examples",
+      "title": "The kind of projects issuers run on Veris Assets",
+      "subtitle": "Solar roofs, logistics, energy renovation, wind: each issuance follows the same controlled journey, from subscription to the last coupon.",
+      "notice": {
+        "title": "Fictitious projects, shown to illustrate the software.",
+        "text": "Veris Assets is a software provider: it does not offer, market or advise on any investment, and never holds investors' funds. Issuances are proposed by their issuers to the investors they invite; subscription funds go to the issuer or to the escrow or paying agent it appoints.",
+        "professional": "Issuances on the platform are for professional investors only."
+      },
+      "filters": {
+        "label": "Filter the projects",
+        "tab": "{name} ({count})",
+        "all": "All",
+        "open": "Open",
+        "upcoming": "Upcoming",
+        "closed": "Closed"
+      },
+      "status": {
+        "open": "Open",
+        "upcoming": "Upcoming",
+        "closed": "Closed"
+      },
+      "kinds": {
+        "solar": "Solar",
+        "wind": "Wind",
+        "storage": "Energy storage",
+        "residential": "Residential",
+        "logistics": "Logistics",
+        "renovation": "Energy renovation",
+        "charging": "EV charging"
+      },
+      "amount": "Issuance",
+      "targetYield": "Target yield",
+      "term": "Term",
+      "years": "{count, plural, one {# year} other {# years}}",
+      "months": "{count} months",
+      "carousel": "carousel",
+      "previous": "Previous projects",
+      "next": "Next projects"
+    }
+  },
+  "calculator": {
+    "eyebrow": "Business case",
+    "title": "Estimate your savings, or your coupons",
+    "subtitle": "Two quick simulations. The calculation runs in your browser: nothing is sent.",
+    "groups": {
+      "issuance": "Your issuance",
+      "operations": "Your operations each year",
+      "costs": "Your current annual costs"
+    },
+    "fields": {
+      "issuanceVolume": "Issuance volume (€)",
+      "investors": "Number of investors",
+      "subscriptionsPerYear": "Subscriptions",
+      "transfersPerYear": "Transfers",
+      "distributionsPerYear": "Distributions (coupons, redemptions)",
+      "hoursPerOperation": "Manual time per operation (hours)",
+      "hourlyCost": "Average hourly cost (€)",
+      "toolsCost": "Tools and software (€)",
+      "providersCost": "Service providers (€)",
+      "incidentsCost": "Incidents and reconciliations (€)"
+    },
+    "assumptions": {
+      "title": "Assumptions",
+      "hint": "Estimates to adjust to your situation.",
+      "timeSavingRate": "Manual time saved (%)",
+      "toolsReduction": "Tools replaced (%)",
+      "providersReduction": "Provider fees replaced (%)",
+      "incidentsReduction": "Incidents avoided (%)",
+      "platformAnnualFee": "Platform annual fee (€)",
+      "platformVolumeRate": "Platform variable fee (% of volume a year)",
+      "reset": "Reset the figures"
+    },
+    "invalid": "Enter a positive number.",
+    "incomplete": "Complete the highlighted fields to see the estimate.",
+    "results": {
+      "title": "Your estimate",
+      "currentCost": "Current annual cost",
+      "savings": "Gross savings a year",
+      "platformCost": "Estimated platform cost a year",
+      "netSavings": "Net savings a year",
+      "roi": "Indicative return on investment",
+      "payback": "Payback",
+      "paybackValue": "{months} months",
+      "hoursSaved": "{hours} hours of administration saved a year",
+      "operations": "{count} manual operations a year: subscriptions, transfers and one payment per investor for each distribution.",
+      "none": "—"
+    },
+    "chart": {
+      "compare": "Annual cost",
+      "today": "Today",
+      "withPlatform": "With Veris Assets",
+      "breakdown": "Where the savings come from",
+      "time": "Time saved",
+      "tools": "Tools",
+      "providers": "Providers",
+      "incidents": "Incidents",
+      "breakdownTitle": "Gross savings a year, by source"
+    },
+    "disclaimer": "Indicative estimates based on your figures and the assumptions shown, not a contractual commitment or a price offer.",
+    "tabs": {
+      "label": "Simulations",
+      "issuer": "Issuer",
+      "investor": "Investor"
+    },
+    "investor": {
+      "title": "Your simulation",
+      "fields": {
+        "amount": "Amount invested (€)",
+        "ratePercent": "Target coupon rate (% a year)",
+        "years": "Term (years)",
+        "frequency": "Coupon frequency"
+      },
+      "frequencies": {
+        "1": "Annual",
+        "2": "Semi-annual",
+        "4": "Quarterly"
+      },
+      "invalid": {
+        "amount": "Enter an amount above zero.",
+        "ratePercent": "Enter a rate from 0 to 100.",
+        "years": "Enter a whole number of years, from 1 to 30."
+      },
+      "incomplete": "Complete the highlighted fields to see the simulation.",
+      "reset": "Reset the figures",
+      "couponPerPeriod": "Coupon per payment",
+      "payments": "Number of payments",
+      "totalCoupons": "Total gross coupons",
+      "totalReceived": "Coupons and principal",
+      "schedule": {
+        "title": "Payment schedule",
+        "payment": "Payment",
+        "month": "No. {number} · month {month}",
+        "coupon": "Coupon",
+        "principal": "Principal"
+      },
+      "disclaimer": "Illustrative simulation, before tax, not guaranteed: the same coupon each period and the principal repaid at maturity, without day count. Investing in private assets carries a risk of capital loss and illiquidity."
+    }
+  },
+  "breakGlass": {
+    "title": "Emergency access",
+    "description": "Read-only access to one organisation's data, when support requires it. Use it only with a documented reason.",
+    "rules": {
+      "readOnly": "Read-only: you can view the organisation's screens, but you cannot change, approve or export anything.",
+      "duration": "One hour at most; you can end it at any time.",
+      "traced": "The reason and every page you view are written in the organisation's audit log.",
+      "notified": "The organisation's administrators are told at once."
+    },
+    "tenant": "Organisation",
+    "chooseTenant": "Choose an organisation",
+    "reason": "Reason",
+    "reasonHint": "For example the support ticket and what you need to check (at least 10 characters).",
+    "start": "Open the emergency access",
+    "errors": {
+      "tenant": "Choose an organisation.",
+      "reason": "Give a reason of at least 10 characters."
+    },
+    "banner": "Emergency read-only access to {tenant} — ends at {time}.",
+    "end": "End the access"
+  },
+  "technology": {
+    "metaTitle": "Technology and reliability",
+    "eyebrow": "Technology",
+    "title": "An architecture built so that the registry can be trusted",
+    "subtitle": "How Veris Assets keeps an exact, traceable and isolated record of every private asset it administers — and what it deliberately does not claim.",
+    "cta": {
+      "demo": "Explore the demo",
+      "contact": "Talk to us"
+    },
+    "overview": {
+      "eyebrow": "Overview",
+      "title": "Four layers, each with one job",
+      "subtitle": "Every request goes through the same path. Nothing reaches the data without passing the checks of each layer.",
+      "browser": {
+        "title": "Your browser",
+        "text": "Encrypted connection (HTTPS), strict content security policy, session cookie unreadable by scripts."
+      },
+      "web": {
+        "title": "Web application",
+        "text": "Screens in English and French. It holds no data: it relays each request to the API."
+      },
+      "api": {
+        "title": "API",
+        "text": "Identity, permissions, four-eyes rules and business checks, then one database transaction per operation."
+      },
+      "database": {
+        "title": "Database",
+        "text": "PostgreSQL with row-level isolation per organisation and an append-only ledger protected by the database itself."
+      }
+    },
+    "ledger": {
+      "eyebrow": "Registry",
+      "title": "An append-only ledger",
+      "p1": "The registry of positions is rebuilt from a ledger of movements: issuance, allocation, blocking, transfer, redemption. The ledger is the source of truth; positions are only its result.",
+      "p2": "A movement is never modified nor deleted. The database refuses it, whoever asks — the application included. A mistake is corrected by a counter-entry, approved by a second person, so the history always shows what happened and how it was put right.",
+      "points": {
+        "p1": "Positions always equal the sum of their movements",
+        "p2": "No negative holding, no unit created out of nothing",
+        "p3": "Corrections by counter-entry, with four eyes"
+      }
+    },
+    "hash": {
+      "eyebrow": "Integrity",
+      "title": "Movements chained by hash",
+      "p1": "Each movement carries a SHA-256 fingerprint of its content and of the fingerprint of the movement before it. Changing one movement, even by one digit, would break every fingerprint that follows.",
+      "p2": "Every night, a check recomputes the whole chain and rebuilds the positions from the ledger. Any difference is written in the audit log and reported to the administrators; nothing is repaired automatically.",
+      "example": "Movement n + 1 = SHA-256(content + fingerprint of movement n)"
+    },
+    "isolation": {
+      "eyebrow": "Isolation",
+      "title": "Each organisation sees only its own data",
+      "p1": "The organisation of a user is always determined by the server from the identity, never from what the browser sends. An attempt to reach another organisation's data answers as if it did not exist, and is logged.",
+      "p2": "Isolation does not rely on the application alone: the database applies it to every row, and the application connects with a role that has only the rights it needs.",
+      "points": {
+        "p1": "Row-level isolation enforced by PostgreSQL",
+        "p2": "Separate database roles, least privilege",
+        "p3": "Every route tested against every role on each change"
+      }
+    },
+    "hosting": {
+      "eyebrow": "Hosting",
+      "title": "European hosting",
+      "p1": "The demonstration runs in a European data centre (Amsterdam, Netherlands): application, database, documents and backups.",
+      "p2": "The database is backed up every night; each backup is checked against a manifest (row counts and ledger fingerprint), and restoring it is tested automatically."
+    },
+    "reliability": {
+      "eyebrow": "Reliability",
+      "title": "Why the platform can be relied on",
+      "fourEyes": {
+        "title": "Four eyes",
+        "text": "Allocations, distributions, payments and corrections need a second person: nobody validates their own operation."
+      },
+      "audit": {
+        "title": "Complete audit trail",
+        "text": "Who did what, when and from where, with values before and after; sensitive data masked."
+      },
+      "exact": {
+        "title": "Exact amounts",
+        "text": "Every amount is computed in exact decimals, never in floating point: a coupon of €2,500.00 is exactly €2,500.00."
+      },
+      "idempotent": {
+        "title": "No double operation",
+        "text": "A request sent twice — a double click, a network retry — is executed once."
+      },
+      "tests": {
+        "title": "Tested on every change",
+        "text": "Several hundred automated tests, including real browser scenarios, run before any change is accepted."
+      },
+      "access": {
+        "title": "Protected access",
+        "text": "Two-factor authentication for administrators and compliance officers, alerts on unusual access, emergency access traced."
+      }
+    },
+    "scope": {
+      "title": "What Veris Assets does not claim",
+      "text": "Veris Assets is a demonstration: fictitious data, fictitious payments and identity checks, no blockchain required. It makes no claim of regulatory approval or authorisation. Its architecture is designed to integrate your compliance controls and is compatible with a future ERC-3643 integration."
+    }
+  }
+}

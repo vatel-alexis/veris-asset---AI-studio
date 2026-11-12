@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment (never commit real values; .env.example is committed)
+.env
+.env.*
+!.env.example
+
+# Tests and coverage
+coverage/
+playwright-report/
+test-results/
+
+# Logs and OS files
+*.log
+.DS_Store
+
+# TypeScript sources are never compiled next to themselves (scripts run with tsx, builds go to dist/)
+apps/api/scripts/**/*.js
+apps/api/src/**/*.js
+*.js.map
+backups/
