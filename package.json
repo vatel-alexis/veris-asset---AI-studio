@@ -4,13 +4,13 @@
   "private": true,
   "type": "module",
   "workspaces": [
-    "apps/*",
+    "apps/web",
     "packages/*"
   ],
   "scripts": {
     "postinstall": "npm run build --workspace=@veris/shared --if-present",
-    "dev": "npm run dev --workspace=@veris/web",
-    "build": "npm run build --workspace=@veris/web",
+    "dev": "npm run build --workspace=@veris/shared --if-present && npm run dev --workspace=@veris/web",
+    "build": "npm run build --workspace=@veris/shared --if-present && npm run build --workspace=@veris/web",
     "start": "npm run start --workspace=@veris/web",
     "preview": "npm run start --workspace=@veris/web",
     "lint": "npm run lint --workspace=@veris/web"
