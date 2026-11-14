@@ -20,6 +20,10 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: { default: PRODUCT_NAME, template: `%s · ${PRODUCT_NAME}` },
   description: 'Digital private asset lifecycle management — demonstration environment.',
+  openGraph: {
+    title: PRODUCT_NAME,
+    description: 'Digital private asset lifecycle management — demonstration environment.',
+  },
   robots: { index: false, follow: false },
 };
 

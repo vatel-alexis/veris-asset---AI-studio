@@ -41,6 +41,17 @@ export function DocumentsTable({ investorId }: { investorId?: string }) {
   });
   return (
     <div className="flex flex-col gap-3">
+      <div className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-border bg-surface px-4 py-2.5 text-xs text-muted">
+        <span>
+          Firebase Cloud Storage ·{' '}
+          <span className="font-mono font-medium text-foreground">
+            gs://lyrical-responder-8v0ns.firebasestorage.app/veris-documents
+          </span>
+        </span>
+        <span className="font-mono text-foreground">
+          SHA-256 · Firestore Sync ({documents.data?.meta.total ?? 0})
+        </span>
+      </div>
       {documents.isError ? <ApiError error={documents.error} /> : null}
       {downloadError ? <ApiError error={downloadError} /> : null}
       <DataTable<Row>
@@ -63,10 +74,18 @@ export function DocumentsTable({ investorId }: { investorId?: string }) {
             id: 'file',
             header: t('columns.file'),
             cell: (row) => (
-              <span className="text-xs text-muted">
-                {row.current.fileName} · {readableSize(row.current.sizeBytes, format)} · v
-                {row.currentVersion}
-              </span>
+              <div className="flex flex-col gap-0.5">
+                <span className="text-xs text-muted">
+                  {row.current.fileName} · {readableSize(row.current.sizeBytes, format)} · v
+                  {row.currentVersion}
+                </span>
+                <span
+                  className="font-mono text-xs text-muted"
+                  title={`SHA-256: ${row.current.checksumSha256}`}
+                >
+                  SHA-256 : {row.current.checksumSha256.slice(0, 16)}…
+                </span>
+              </div>
             ),
           },
           {

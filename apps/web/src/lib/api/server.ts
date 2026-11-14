@@ -1,5 +1,7 @@
 import { cookies } from 'next/headers';
 import { cache } from 'react';
+import { ensureFirestoreSeeded } from '@/lib/firebase/firestore-store';
+import { DEMO_COOKIE, getDomainBundleForFirestore, handleMockApiRequest } from './mock-api';
 import type { operations } from './schema';
 
 // The web server calls the API directly on the machine (not through the public address).
@@ -14,10 +16,30 @@ export type PortalName = CurrentUser['homePortal'];
 
 /** Calls the API from the web server with the visitor's cookies. */
 export async function apiFromServer(path: string): Promise<Response> {
-  const cookieHeader = (await cookies()).toString();
-  return fetch(`${API_URL}${path}`, {
-    headers: cookieHeader ? { cookie: cookieHeader } : {},
-    cache: 'no-store',
+  const cookieStore = await cookies();
+  const cookieHeader = cookieStore.toString();
+  if (process.env.API_INTERNAL_URL) {
+    try {
+      return await fetch(`${API_URL}${path}`, {
+        headers: cookieHeader ? { cookie: cookieHeader } : {},
+        cache: 'no-store',
+      });
+    } catch {
+      // Fall back to Firestore-backed store when external API is unreachable.
+    }
+  }
+  await ensureFirestoreSeeded(getDomainBundleForFirestore());
+  const url = new URL(path, 'http://localhost:3000');
+  const demoEmail = cookieStore.get(DEMO_COOKIE)?.value;
+  const result = handleMockApiRequest(
+    'GET',
+    url.pathname,
+    url.searchParams,
+    demoEmail ? decodeURIComponent(demoEmail) : undefined,
+  );
+  return new Response(JSON.stringify(result.body), {
+    status: result.status,
+    headers: { 'content-type': 'application/json' },
   });
 }
 

@@ -1,5 +1,5 @@
 {
-  "extends": "@veris/config/tsconfig/node-library.json",
+  "extends": "../config/tsconfig/node-library.json",
   "compilerOptions": {
     "rootDir": ".",
     "outDir": "./dist"

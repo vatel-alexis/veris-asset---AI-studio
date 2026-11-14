@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useRouter } from '@/i18n/navigation';
 import { api } from '@/lib/api/client';
+import { signOutFromFirebase } from '@/lib/firebase/client';
 
 export function SignOutButton() {
   const t = useTranslations('auth');
@@ -18,7 +19,7 @@ export function SignOutButton() {
       disabled={pending}
       onClick={async () => {
         setPending(true);
-        await api.POST('/api/v1/auth/sign-out');
+        await Promise.all([api.POST('/api/v1/auth/sign-out'), signOutFromFirebase()]);
         router.replace('/login');
         router.refresh();
       }}

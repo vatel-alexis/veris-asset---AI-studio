@@ -12,16 +12,18 @@ const codespacesDomain = process.env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN;
 // so that session cookies stay on a single origin.
 // On Railway, API_INTERNAL_URL is the API's private address (http://api.railway.internal:4000);
 // it is read when the app is built, so it is passed to the build as well (D-106).
-const apiUrl =
-  process.env.API_INTERNAL_URL ??
-  `http://${process.env.API_HOST ?? '127.0.0.1'}:${process.env.API_PORT ?? '4000'}`;
+const apiUrl = process.env.API_INTERNAL_URL;
 
 const nextConfig: NextConfig = {
   // Workspace packages are compiled by Next.js like local code.
   transpilePackages: ['@veris/shared'],
-  allowedDevOrigins: codespacesDomain ? [`*.${codespacesDomain}`] : [],
+  allowedDevOrigins: codespacesDomain
+    ? [`*.${codespacesDomain}`]
+    : ['veris-assets.com', '*.veris-assets.com', '*.hosted.app', '*.web.app', '*.run.app'],
   rewrites() {
-    return Promise.resolve([{ source: '/api/:path*', destination: `${apiUrl}/api/:path*` }]);
+    return Promise.resolve(
+      apiUrl ? [{ source: '/api/:path*', destination: `${apiUrl}/api/:path*` }] : [],
+    );
   },
   // Security headers of every response (SPEC §24, P16-1); the Content Security Policy of the
   // pages is set per request in src/proxy.ts, with its nonce.
@@ -32,13 +34,13 @@ const nextConfig: NextConfig = {
         headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-          { key: 'X-Frame-Options', value: 'DENY' },
-          { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+          // same-origin-allow-popups allows Firebase Auth signInWithPopup on veris-assets.com
+          { key: 'Cross-Origin-Opener-Policy', value: 'same-origin-allow-popups' },
           {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=()',
           },
-          // Only honoured by browsers over HTTPS (the online demonstration).
+          // Honoured by browsers over HTTPS (https://veris-assets.com and *.hosted.app / *.run.app).
           { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains' },
         ],
       },

@@ -1,0 +1,26 @@
+{
+  "firestore": [
+    {
+      "database": "ai-studio-verisassets-ada71c71-7f25-4c33-b48c-42e784996aee",
+      "rules": "firestore.rules",
+      "indexes": "firestore.indexes.json"
+    }
+  ],
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "apphosting": [
+    {
+      "backendId": "veris-assets-web",
+      "rootDir": "apps/web",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "playwright-report",
+        "test-results"
+      ]
+    }
+  ]
+}

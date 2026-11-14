@@ -1,8 +1,8 @@
 'use client';
 
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { KeyRound } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { KeyRound, ShieldCheck } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 import { useState, type FormEvent } from 'react';
 import { FormField } from '@/components/app/form-field';
 import { Button } from '@/components/ui/button';
@@ -11,14 +11,16 @@ import { Link, useRouter } from '@/i18n/navigation';
 import { api } from '@/lib/api/client';
 import type { operations } from '@/lib/api/schema';
 import { ApiError } from '@/components/app/api-error';
+import { signInWithGooglePopup } from '@/lib/firebase/client';
 import { useAfterSignIn } from './use-after-sign-in';
 
 export type DemoAccounts =
   operations['AuthController_demoAccountsList']['responses'][200]['content']['application/json'];
 
-/** Sign-in form, with the demonstration accounts beside it in demo mode (D-016, SPEC §28). */
+/** Sign-in form, with Firebase Google Authentication and demonstration accounts beside it (D-016, SPEC §28). */
 export function SignIn({ demo, next }: { demo: DemoAccounts | null; next: string | null }) {
   const t = useTranslations('auth');
+  const locale = useLocale() as 'en-GB' | 'fr-FR';
   const router = useRouter();
   const afterSignIn = useAfterSignIn();
   const [email, setEmail] = useState('');
@@ -39,6 +41,28 @@ export function SignIn({ demo, next }: { demo: DemoAccounts | null; next: string
     },
   });
 
+  const googleSignIn = useMutation({
+    mutationFn: async () => {
+      const user = await signInWithGooglePopup(locale);
+      const response = await fetch('/api/v1/auth/firebase-sign-in', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          email: user.email,
+          name: user.displayName,
+          uid: user.uid,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error('Firebase sign-in session registration failed');
+      }
+      return response.json();
+    },
+    onSuccess: async () => {
+      await afterSignIn(next);
+    },
+  });
+
   function submit(event: FormEvent) {
     event.preventDefault();
     signIn.mutate();
@@ -46,33 +70,55 @@ export function SignIn({ demo, next }: { demo: DemoAccounts | null; next: string
 
   return (
     <div className="flex flex-col gap-8 md:flex-row md:items-start">
-      <form onSubmit={submit} className="flex w-full max-w-md flex-col gap-4" noValidate>
-        <FormField label={t('signIn.email')}>
-          <Input
-            type="email"
-            autoComplete="username"
-            required
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
-        </FormField>
-        <FormField label={t('signIn.password')}>
-          <Input
-            type="password"
-            autoComplete="current-password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </FormField>
-        {signIn.isError ? <ApiError error={signIn.error} /> : null}
-        <Button type="submit" disabled={signIn.isPending || !email || !password}>
-          {t('signIn.submit')}
-        </Button>
-        <Link href="/forgot-password" className="text-sm text-primary-text hover:underline">
-          {t('signIn.forgotPassword')}
-        </Link>
-      </form>
+      <div className="flex w-full max-w-md flex-col gap-5">
+        <form onSubmit={submit} className="flex flex-col gap-4" noValidate>
+          <FormField label={t('signIn.email')}>
+            <Input
+              type="email"
+              autoComplete="username"
+              required
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+          </FormField>
+          <FormField label={t('signIn.password')}>
+            <Input
+              type="password"
+              autoComplete="current-password"
+              required
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </FormField>
+          {signIn.isError ? <ApiError error={signIn.error} /> : null}
+          <Button type="submit" disabled={signIn.isPending || !email || !password}>
+            {t('signIn.submit')}
+          </Button>
+          <Link href="/forgot-password" className="text-sm text-primary-text hover:underline">
+            {t('signIn.forgotPassword')}
+          </Link>
+        </form>
+
+        <div className="flex flex-col gap-3 border-t border-border pt-4">
+          <Button
+            type="button"
+            variant="secondary"
+            disabled={googleSignIn.isPending}
+            onClick={() => googleSignIn.mutate()}
+          >
+            <ShieldCheck aria-hidden="true" className="size-4 text-accent" />
+            {locale === 'fr-FR'
+              ? 'Continuer avec Google (Firebase Auth)'
+              : 'Continue with Google (Firebase Auth)'}
+          </Button>
+          <p className="text-xs text-muted">
+            {locale === 'fr-FR'
+              ? 'Persistance Cloud Firestore activée — votre profil est synchronisé avec Firebase.'
+              : 'Cloud Firestore persistence enabled — your profile is synchronized with Firebase.'}
+          </p>
+        </div>
+      </div>
+
       {demo ? (
         <DemoAccountsPanel
           initial={demo}

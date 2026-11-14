@@ -1,0 +1,36 @@
+rules_version = '2';
+
+// Firebase Cloud Storage Security Rules for Veris Assets (lyrical-responder-8v0ns.firebasestorage.app)
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isSignedIn() {
+      return request.auth != null && request.auth.token.email_verified == true;
+    }
+
+    function isAllowedMimeType() {
+      return request.resource.contentType.matches('application/pdf')
+        || request.resource.contentType.matches('image/png')
+        || request.resource.contentType.matches('image/jpeg')
+        || request.resource.contentType.matches('text/csv')
+        || request.resource.contentType.matches('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    }
+
+    function isWithinSizeLimit() {
+      // SPEC §16: Maximum 10 MB per document
+      return request.resource.size > 0 && request.resource.size <= 10 * 1024 * 1024;
+    }
+
+    match /veris-documents/{ownerType}/{documentId}/{fileName} {
+      allow read: if isSignedIn();
+      allow create, update: if isSignedIn()
+        && isAllowedMimeType()
+        && isWithinSizeLimit()
+        && fileName.size() <= 180;
+      allow delete: if false;
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

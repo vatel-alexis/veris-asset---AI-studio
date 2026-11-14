@@ -14,13 +14,13 @@ export function contentSecurityPolicy(nonce: string, options: { dev: boolean; ht
     "default-src 'self'",
     `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${options.dev ? " 'unsafe-eval'" : ''}`,
     "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' blob: data:",
+    "img-src 'self' blob: data: https://*.google.com https://*.googleusercontent.com https://*.gstatic.com",
     "font-src 'self'",
-    "connect-src 'self'",
+    "connect-src 'self' https://*.googleapis.com https://*.google.com https://*.firebaseio.com wss://*.firebaseio.com https://*.firebaseapp.com",
+    "frame-src 'self' https://*.firebaseapp.com https://accounts.google.com https://apis.google.com",
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",
-    "frame-ancestors 'none'",
     ...(options.https ? ['upgrade-insecure-requests'] : []),
   ].join('; ');
 }
@@ -30,9 +30,12 @@ export function contentSecurityPolicy(nonce: string, options: { dev: boolean; ht
 // static files are left untouched.
 export default function proxy(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
+  const forwardedProto = request.headers.get('x-forwarded-proto');
+  const isHttps =
+    forwardedProto === 'https' || (process.env.WEB_ORIGIN ?? '').startsWith('https://');
   const policy = contentSecurityPolicy(nonce, {
     dev: process.env.NODE_ENV === 'development',
-    https: (process.env.WEB_ORIGIN ?? '').startsWith('https://'),
+    https: isHttps,
   });
   // Next.js reads the policy from the request to put the nonce on the scripts it renders.
   const headers = new Headers(request.headers);

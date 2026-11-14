@@ -1,0 +1,370 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // =========================================================================
+    // PILLAR 1: GLOBAL DEFAULT-DENY SAFETY NET
+    // =========================================================================
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // =========================================================================
+    // PILLAR 2 & 7: CRYPTOGRAPHIC TRUST & HELPER FUNCTIONS
+    // =========================================================================
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerified() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string
+        && id.size() >= 1
+        && id.size() <= 128
+        && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isAdmin() {
+      return isVerified()
+        && (
+          exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+          || request.auth.token.email == 'vatelalexis@gmail.com'
+        );
+    }
+
+    // =========================================================================
+    // PILLAR 3 & 4: SCHEMA VALIDATORS
+    // =========================================================================
+    function isValidUserProfile(data, userId) {
+      return data.keys().hasAll(['uid', 'displayName', 'role', 'tenant', 'locale', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['uid', 'displayName', 'role', 'tenant', 'locale', 'createdAt', 'updatedAt'])
+        && data.uid is string
+        && data.uid == userId
+        && data.displayName is string
+        && data.displayName.size() >= 1
+        && data.displayName.size() <= 120
+        && data.role is string
+        && data.role in ['PLATFORM_ADMIN', 'ISSUER_ADMIN', 'ISSUER_OPERATOR', 'COMPLIANCE_OFFICER', 'AUDITOR', 'INVESTOR']
+        && data.tenant is string
+        && data.tenant.size() >= 1
+        && data.tenant.size() <= 64
+        && data.locale is string
+        && data.locale in ['en-GB', 'fr-FR']
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidUserPrivate(data, userId) {
+      return data.keys().hasAll(['ownerId', 'email', 'phone', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['ownerId', 'email', 'phone', 'createdAt', 'updatedAt'])
+        && data.ownerId is string
+        && data.ownerId == userId
+        && data.email is string
+        && data.email.size() >= 3
+        && data.email.size() <= 254
+        && data.email.matches('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')
+        && data.phone is string
+        && data.phone.size() >= 0
+        && data.phone.size() <= 40
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidAdminRole(data, userId) {
+      return data.keys().hasAll(['ownerId', 'role', 'createdAt'])
+        && data.keys().hasOnly(['ownerId', 'role', 'createdAt'])
+        && data.ownerId is string
+        && data.ownerId == userId
+        && data.role is string
+        && data.role in ['PLATFORM_ADMIN', 'ISSUER_ADMIN']
+        && data.createdAt is timestamp;
+    }
+
+    function isValidIssuance(data, issuanceId) {
+      return data.keys().hasAll([
+          'id', 'ownerId', 'name', 'code', 'description', 'assetCategory',
+          'countryCode', 'currency', 'legalIssuerName', 'status',
+          'targetAmount', 'version', 'createdAt', 'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'id', 'ownerId', 'name', 'code', 'description', 'assetCategory',
+          'countryCode', 'currency', 'legalIssuerName', 'status',
+          'targetAmount', 'version', 'createdAt', 'updatedAt'
+        ])
+        && data.id is string
+        && data.id == issuanceId
+        && data.ownerId is string
+        && data.ownerId.size() >= 1
+        && data.ownerId.size() <= 128
+        && data.name is string
+        && data.name.size() >= 1
+        && data.name.size() <= 200
+        && data.code is string
+        && data.code.size() >= 1
+        && data.code.size() <= 32
+        && data.description is string
+        && data.description.size() >= 1
+        && data.description.size() <= 2000
+        && data.assetCategory is string
+        && data.assetCategory in ['PRIVATE_DEBT', 'RENEWABLE_ENERGY', 'INFRASTRUCTURE', 'REAL_ESTATE', 'CORPORATE_BOND']
+        && data.countryCode is string
+        && data.countryCode.size() == 2
+        && data.currency is string
+        && data.currency.size() == 3
+        && data.legalIssuerName is string
+        && data.legalIssuerName.size() >= 1
+        && data.legalIssuerName.size() <= 200
+        && data.status is string
+        && data.status in [
+          'DRAFT', 'UNDER_REVIEW', 'APPROVED', 'SUBSCRIPTION_OPEN',
+          'SUBSCRIPTION_CLOSED', 'ALLOCATED', 'ACTIVE', 'MATURED', 'CANCELLED'
+        ]
+        && data.targetAmount is number
+        && data.targetAmount >= 0
+        && data.targetAmount <= 100000000000
+        && data.version is int
+        && data.version >= 1
+        && data.version <= 1000000
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidSubscription(data, subscriptionId) {
+      return data.keys().hasAll([
+          'id', 'ownerId', 'issuanceId', 'issuanceCode', 'investorId',
+          'investorName', 'status', 'requestedUnits', 'requestedAmount',
+          'currency', 'createdAt', 'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'id', 'ownerId', 'issuanceId', 'issuanceCode', 'investorId',
+          'investorName', 'status', 'requestedUnits', 'requestedAmount',
+          'currency', 'createdAt', 'updatedAt'
+        ])
+        && data.id is string
+        && data.id == subscriptionId
+        && data.ownerId is string
+        && data.ownerId.size() >= 1
+        && data.ownerId.size() <= 128
+        && data.issuanceId is string
+        && data.issuanceId.size() >= 1
+        && data.issuanceId.size() <= 128
+        && data.issuanceCode is string
+        && data.issuanceCode.size() >= 1
+        && data.issuanceCode.size() <= 32
+        && data.investorId is string
+        && data.investorId.size() >= 1
+        && data.investorId.size() <= 128
+        && data.investorName is string
+        && data.investorName.size() >= 1
+        && data.investorName.size() <= 200
+        && data.status is string
+        && data.status in [
+          'DRAFT', 'SUBMITTED', 'UNDER_REVIEW', 'APPROVED', 'REJECTED',
+          'PAYMENT_PENDING', 'PAYMENT_CONFIRMED', 'ALLOCATED', 'CANCELLED'
+        ]
+        && data.requestedUnits is int
+        && data.requestedUnits >= 1
+        && data.requestedUnits <= 100000000
+        && data.requestedAmount is number
+        && data.requestedAmount >= 1
+        && data.requestedAmount <= 100000000000
+        && data.currency is string
+        && data.currency.size() == 3
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidDomainSnapshot(data, snapshotId) {
+      return data.keys().hasAll(['id', 'collection', 'payloadJson', 'updatedAt'])
+        && data.keys().hasOnly(['id', 'collection', 'payloadJson', 'updatedAt'])
+        && data.id is string
+        && data.id == snapshotId
+        && data.collection is string
+        && data.collection in [
+          'tenants', 'issuances', 'investors', 'subscriptions', 'positions',
+          'ledger', 'distributions', 'transfers', 'auditEvents', 'notifications'
+        ]
+        && data.payloadJson is string
+        && data.payloadJson.size() >= 2
+        && data.payloadJson.size() <= 500000
+        && data.updatedAt is timestamp;
+    }
+
+    // =========================================================================
+    // COLLECTION RULES
+    // =========================================================================
+
+    match /users/{userId} {
+      allow get: if isValidId(userId) && (isOwner(userId) || isAdmin());
+      allow list: if isAdmin();
+
+      allow create: if isVerified()
+        && isValidId(userId)
+        && isOwner(userId)
+        && isValidUserProfile(request.resource.data, userId)
+        && (request.resource.data.role == 'INVESTOR' || isAdmin())
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time;
+
+      allow update: if isVerified()
+        && isValidId(userId)
+        && isValidUserProfile(request.resource.data, userId)
+        && request.resource.data.uid == resource.data.uid
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.updatedAt == request.time
+        && (
+          (
+            isOwner(userId)
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['displayName', 'locale', 'updatedAt'])
+          )
+          || (
+            isAdmin()
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['displayName', 'role', 'tenant', 'locale', 'updatedAt'])
+          )
+        );
+
+      allow delete: if isValidId(userId) && isAdmin();
+
+      match /private/{docId} {
+        allow get: if isValidId(userId) && isValidId(docId) && isOwner(userId);
+        allow list: if false;
+
+        allow create: if isVerified()
+          && isValidId(userId)
+          && isValidId(docId)
+          && isOwner(userId)
+          && isValidUserPrivate(request.resource.data, userId)
+          && request.resource.data.createdAt == request.time
+          && request.resource.data.updatedAt == request.time;
+
+        allow update: if isVerified()
+          && isValidId(userId)
+          && isValidId(docId)
+          && isOwner(userId)
+          && isValidUserPrivate(request.resource.data, userId)
+          && request.resource.data.ownerId == resource.data.ownerId
+          && request.resource.data.createdAt == resource.data.createdAt
+          && request.resource.data.updatedAt == request.time
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['email', 'phone', 'updatedAt']);
+
+        allow delete: if isVerified() && isValidId(userId) && isValidId(docId) && isOwner(userId);
+      }
+    }
+
+    match /admins/{userId} {
+      allow get: if isValidId(userId) && (isOwner(userId) || isAdmin());
+      allow list: if isAdmin();
+
+      allow create: if isAdmin()
+        && isValidId(userId)
+        && isValidAdminRole(request.resource.data, userId)
+        && request.resource.data.createdAt == request.time;
+
+      allow update: if isAdmin()
+        && isValidId(userId)
+        && isValidAdminRole(request.resource.data, userId)
+        && request.resource.data.ownerId == resource.data.ownerId
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['role']);
+
+      allow delete: if isValidId(userId) && isAdmin();
+    }
+
+    match /issuances/{issuanceId} {
+      allow get: if isSignedIn() && isValidId(issuanceId);
+      allow list: if isSignedIn() && request.query.limit <= 100;
+
+      allow create: if isAdmin()
+        && isValidId(issuanceId)
+        && isValidIssuance(request.resource.data, issuanceId)
+        && request.resource.data.ownerId == request.auth.uid
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time;
+
+      allow update: if isAdmin()
+        && isValidId(issuanceId)
+        && isValidIssuance(request.resource.data, issuanceId)
+        && request.resource.data.id == resource.data.id
+        && request.resource.data.ownerId == resource.data.ownerId
+        && request.resource.data.code == resource.data.code
+        && request.resource.data.currency == resource.data.currency
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.updatedAt == request.time
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'name', 'description', 'status', 'targetAmount', 'version', 'updatedAt'
+        ]);
+
+      allow delete: if isValidId(issuanceId) && isAdmin();
+    }
+
+    match /subscriptions/{subscriptionId} {
+      allow get: if isSignedIn()
+        && isValidId(subscriptionId)
+        && (resource.data.ownerId == request.auth.uid || isAdmin());
+      allow list: if isAdmin() && request.query.limit <= 100;
+
+      allow create: if isVerified()
+        && isValidId(subscriptionId)
+        && isValidSubscription(request.resource.data, subscriptionId)
+        && request.resource.data.ownerId == request.auth.uid
+        && request.resource.data.status in ['DRAFT', 'SUBMITTED']
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time;
+
+      allow update: if isVerified()
+        && isValidId(subscriptionId)
+        && isValidSubscription(request.resource.data, subscriptionId)
+        && request.resource.data.id == resource.data.id
+        && request.resource.data.ownerId == resource.data.ownerId
+        && request.resource.data.issuanceId == resource.data.issuanceId
+        && request.resource.data.issuanceCode == resource.data.issuanceCode
+        && request.resource.data.investorId == resource.data.investorId
+        && request.resource.data.currency == resource.data.currency
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.updatedAt == request.time
+        && (
+          (
+            resource.data.ownerId == request.auth.uid
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt'])
+            && request.resource.data.status == 'CANCELLED'
+          )
+          || (
+            isAdmin()
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+              'status', 'requestedUnits', 'requestedAmount', 'updatedAt'
+            ])
+          )
+        );
+
+      allow delete: if isValidId(subscriptionId) && isAdmin();
+    }
+
+    match /domainSnapshots/{snapshotId} {
+      allow get: if isSignedIn() && isValidId(snapshotId);
+      allow list: if isSignedIn() && request.query.limit <= 100;
+
+      allow create: if isAdmin()
+        && isValidId(snapshotId)
+        && isValidDomainSnapshot(request.resource.data, snapshotId)
+        && request.resource.data.updatedAt == request.time;
+
+      allow update: if isAdmin()
+        && isValidId(snapshotId)
+        && isValidDomainSnapshot(request.resource.data, snapshotId)
+        && request.resource.data.id == resource.data.id
+        && request.resource.data.collection == resource.data.collection
+        && request.resource.data.updatedAt == request.time
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['payloadJson', 'updatedAt']);
+
+      allow delete: if isValidId(snapshotId) && isAdmin();
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ErrorState } from '@/components/app/error-state';
 import { PageHeader } from '@/components/app/page-header';
+import { HostingDomainPanel } from '@/features/organisation/hosting-domain-panel';
 import { OrganisationSettings } from '@/features/organisation/organisation-settings';
 import { UsersPanel } from '@/features/organisation/users-panel';
 import { getCurrentUser } from '@/lib/api/server';
@@ -19,6 +20,7 @@ export default async function IssuerSettingsPage({
     <div className="flex flex-col gap-8">
       <PageHeader title={t('settings.title')} />
       {permissions['tenant-settings:manage'] ? <OrganisationSettings /> : null}
+      <HostingDomainPanel />
       <section aria-labelledby="users-title" className="flex flex-col gap-4">
         <h2 id="users-title" className="font-heading text-lg font-semibold">
           {t('users.title')}

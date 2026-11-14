@@ -1,0 +1,46 @@
+# Firebase App Hosting configuration when rootDir is set to apps/web
+# Target domain: https://veris-assets.com
+
+runConfig:
+  minInstances: 0
+  maxInstances: 10
+  concurrency: 80
+  cpu: 1
+  memoryMiB: 512
+
+env:
+  - variable: NODE_ENV
+    value: production
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_TELEMETRY_DISABLED
+    value: "1"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: WEB_ORIGIN
+    value: https://veris-assets.com
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_SITE_URL
+    value: https://veris-assets.com
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: FIREBASE_PROJECT_ID
+    value: lyrical-responder-8v0ns
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: FIRESTORE_DATABASE_ID
+    value: ai-studio-verisassets-ada71c71-7f25-4c33-b48c-42e784996aee
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: DEMO_MODE
+    value: "true"
+    availability:
+      - BUILD
+      - RUNTIME

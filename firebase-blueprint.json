@@ -1,0 +1,194 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Publicly readable user profile metadata without raw PII.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID matching document ID." },
+        "displayName": { "type": "string", "description": "Display name of the user." },
+        "role": {
+          "type": "string",
+          "enum": [
+            "PLATFORM_ADMIN",
+            "ISSUER_ADMIN",
+            "ISSUER_OPERATOR",
+            "COMPLIANCE_OFFICER",
+            "AUDITOR",
+            "INVESTOR"
+          ],
+          "description": "Assigned role code."
+        },
+        "tenant": { "type": "string", "description": "Tenant key or 'platform'." },
+        "locale": { "type": "string", "enum": ["en-GB", "fr-FR"], "description": "Preferred UI locale." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Last update timestamp." }
+      },
+      "required": ["uid", "displayName", "role", "tenant", "locale", "createdAt", "updatedAt"]
+    },
+    "UserPrivate": {
+      "title": "UserPrivate",
+      "description": "Owner-isolated PII document containing sensitive contact information.",
+      "type": "object",
+      "properties": {
+        "ownerId": { "type": "string", "description": "UID of the user who owns this PII record." },
+        "email": { "type": "string", "format": "email", "description": "Private email address." },
+        "phone": { "type": "string", "description": "Private phone number." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Last update timestamp." }
+      },
+      "required": ["ownerId", "email", "phone", "createdAt", "updatedAt"]
+    },
+    "AdminRole": {
+      "title": "AdminRole",
+      "description": "Platform administrator lookup document keyed by userId.",
+      "type": "object",
+      "properties": {
+        "ownerId": { "type": "string", "description": "UID of the admin user." },
+        "role": { "type": "string", "enum": ["PLATFORM_ADMIN", "ISSUER_ADMIN"], "description": "Admin role." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Grant timestamp." }
+      },
+      "required": ["ownerId", "role", "createdAt"]
+    },
+    "Issuance": {
+      "title": "Issuance",
+      "description": "Digital private asset issuance record persisted in Firestore.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Deterministic UUID of the issuance." },
+        "ownerId": { "type": "string", "description": "UID of the issuer creator/admin." },
+        "name": { "type": "string", "description": "Issuance name." },
+        "code": { "type": "string", "description": "Short ticker/code." },
+        "description": { "type": "string", "description": "Issuance summary." },
+        "assetCategory": {
+          "type": "string",
+          "enum": ["PRIVATE_DEBT", "RENEWABLE_ENERGY", "INFRASTRUCTURE", "REAL_ESTATE", "CORPORATE_BOND"],
+          "description": "Asset category."
+        },
+        "countryCode": { "type": "string", "description": "ISO-2 country code." },
+        "currency": { "type": "string", "description": "ISO-3 currency code." },
+        "legalIssuerName": { "type": "string", "description": "Legal issuer entity name." },
+        "status": {
+          "type": "string",
+          "enum": [
+            "DRAFT",
+            "UNDER_REVIEW",
+            "APPROVED",
+            "SUBSCRIPTION_OPEN",
+            "SUBSCRIPTION_CLOSED",
+            "ALLOCATED",
+            "ACTIVE",
+            "MATURED",
+            "CANCELLED"
+          ],
+          "description": "Lifecycle status."
+        },
+        "targetAmount": { "type": "number", "description": "Target nominal amount in major currency units." },
+        "version": { "type": "integer", "description": "Optimistic concurrency version." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Last update timestamp." }
+      },
+      "required": [
+        "id",
+        "ownerId",
+        "name",
+        "code",
+        "description",
+        "assetCategory",
+        "countryCode",
+        "currency",
+        "legalIssuerName",
+        "status",
+        "targetAmount",
+        "version",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Subscription": {
+      "title": "Subscription",
+      "description": "Investor subscription order for an issuance.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Deterministic UUID of the subscription." },
+        "ownerId": { "type": "string", "description": "UID of the subscribing user." },
+        "issuanceId": { "type": "string", "description": "Target issuance ID." },
+        "issuanceCode": { "type": "string", "description": "Target issuance code." },
+        "investorId": { "type": "string", "description": "Investor entity ID." },
+        "investorName": { "type": "string", "description": "Investor legal name." },
+        "status": {
+          "type": "string",
+          "enum": [
+            "DRAFT",
+            "SUBMITTED",
+            "UNDER_REVIEW",
+            "APPROVED",
+            "REJECTED",
+            "PAYMENT_PENDING",
+            "PAYMENT_CONFIRMED",
+            "ALLOCATED",
+            "CANCELLED"
+          ],
+          "description": "Subscription status."
+        },
+        "requestedUnits": { "type": "integer", "description": "Requested number of units." },
+        "requestedAmount": { "type": "number", "description": "Requested amount in currency." },
+        "currency": { "type": "string", "description": "ISO-3 currency code." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Submission timestamp." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Last update timestamp." }
+      },
+      "required": [
+        "id",
+        "ownerId",
+        "issuanceId",
+        "issuanceCode",
+        "investorId",
+        "investorName",
+        "status",
+        "requestedUnits",
+        "requestedAmount",
+        "currency",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "DomainSnapshot": {
+      "title": "DomainSnapshot",
+      "description": "Server-managed domain collection record for Veris Assets entities.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Entity identifier." },
+        "collection": { "type": "string", "description": "Domain collection name." },
+        "payloadJson": { "type": "string", "description": "Serialized JSON payload of the domain entity." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Last update timestamp." }
+      },
+      "required": ["id", "collection", "payloadJson", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Public user profiles without raw PII."
+    },
+    "/users/{userId}/private/{docId}": {
+      "schema": { "$ref": "#/entities/UserPrivate" },
+      "description": "Isolated user PII (email, phone) accessible only to the owner."
+    },
+    "/admins/{userId}": {
+      "schema": { "$ref": "#/entities/AdminRole" },
+      "description": "Administrator lookup collection."
+    },
+    "/issuances/{issuanceId}": {
+      "schema": { "$ref": "#/entities/Issuance" },
+      "description": "Private asset issuances."
+    },
+    "/subscriptions/{subscriptionId}": {
+      "schema": { "$ref": "#/entities/Subscription" },
+      "description": "Investor subscriptions."
+    },
+    "/domainSnapshots/{snapshotId}": {
+      "schema": { "$ref": "#/entities/DomainSnapshot" },
+      "description": "Admin-managed domain records for Veris Assets persistence."
+    }
+  }
+}
