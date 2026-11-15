@@ -6,12 +6,13 @@
   "scripts": {
     "postinstall": "rm -rf apps/web/node_modules packages/shared/node_modules && if [ -f packages/shared/tsconfig.build.json ]; then mkdir -p node_modules/@veris && ln -sfn ../../packages/shared node_modules/@veris/shared && (cd packages/shared && tsc -p tsconfig.build.json); fi",
     "dev": "rm -rf apps/web/node_modules packages/shared/node_modules && mkdir -p node_modules/@veris && ln -sfn ../../packages/shared node_modules/@veris/shared && (cd packages/shared && tsc -p tsconfig.build.json) && (cd apps/web && next dev --port 3000 --hostname 0.0.0.0)",
-    "build": "rm -rf .next apps/web/.next apps/web/node_modules packages/shared/node_modules && mkdir -p node_modules/@veris && ln -sfn ../../packages/shared node_modules/@veris/shared && (cd packages/shared && tsc -p tsconfig.build.json) && (cd apps/web && NODE_ENV=production next build) && node scripts/prepare-standalone.mjs",
+    "build": "if [ \"$WORKERS_CI\" = \"1\" ] || [ \"$CF_PAGES\" = \"1\" ]; then echo 'Cloudflare Worker CI detected: skipping Next.js build'; exit 0; fi && rm -rf .next apps/web/.next apps/web/node_modules packages/shared/node_modules && mkdir -p node_modules/@veris && ln -sfn ../../packages/shared node_modules/@veris/shared && (cd packages/shared && tsc -p tsconfig.build.json) && (cd apps/web && NODE_ENV=production next build) && node scripts/prepare-standalone.mjs",
     "start": "NODE_ENV=production node .next/standalone/server.js",
     "preview": "NODE_ENV=production node .next/standalone/server.js",
     "lint": "cd apps/web && eslint src"
   },
   "devDependencies": {
+    "@eslint/js": "9.39.5",
     "eslint": "9.39.5",
     "eslint-config-next": "16.3.6",
     "eslint-config-prettier": "10.1.8"
