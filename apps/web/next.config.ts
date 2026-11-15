@@ -15,6 +15,7 @@ const codespacesDomain = process.env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN;
 const apiUrl = process.env.API_INTERNAL_URL;
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   // Workspace packages are compiled by Next.js like local code.
   transpilePackages: ['@veris/shared'],
   allowedDevOrigins: codespacesDomain
