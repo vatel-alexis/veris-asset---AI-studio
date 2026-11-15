@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "next build --webpack && rm -rf .next/cache .next/dev",
+    "build": "next build && rm -rf .next/cache .next/dev",
     "dev": "next dev --port 3000 --hostname 0.0.0.0",
-    "start": "next start --hostname 0.0.0.0 --port ${PORT:-8080}",
+    "start": "NODE_ENV=production next start --hostname 0.0.0.0 --port ${PORT:-8080}",
     "typecheck": "next typegen && tsc --noEmit",
     "lint": "eslint .",
     "test": "vitest run --passWithNoTests",
