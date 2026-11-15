@@ -2,3 +2,8 @@ name = "veris-asset---ai-studio"
 main = "scripts/cloudflare-proxy-worker.mjs"
 compatibility_date = "2025-01-01"
 workers_dev = true
+
+routes = [
+  { pattern = "veris-assets.com/*", zone_name = "veris-assets.com" },
+  { pattern = "www.veris-assets.com/*", zone_name = "veris-assets.com" }
+]
