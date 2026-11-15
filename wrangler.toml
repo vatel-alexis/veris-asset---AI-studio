@@ -1,0 +1,4 @@
+name = "veris-asset---ai-studio"
+main = "scripts/cloudflare-proxy-worker.mjs"
+compatibility_date = "2025-01-01"
+workers_dev = true
