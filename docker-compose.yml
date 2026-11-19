@@ -21,7 +21,7 @@ services:
       retries: 20
 
   redis:
-    image: redis:8.10.2-alpine
+    image: redis:8.10.3-alpine
     # Cache and rate limiting only: no persistence needed.
     command: ['redis-server', '--save', '', '--appendonly', 'no']
     ports:
